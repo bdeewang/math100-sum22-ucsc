@@ -1,0 +1,716 @@
+\vspace*{1em}
+
+\begin{definition}[Statement]
+A \cdef{statement} is a declarative sentence which can be objectively determined to be either \emph{true} or \emph{false}.
+\end{definition}
+
+%\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}
+\item[(a)] \emph{The integer $11$ is divisible by $4$}. {\bf False} statement.
+\item[(b)] \emph{The integer $11$ is a prime number}. {\bf True} statement.
+\item[(c)] \emph{Is $10^{10}$ an integer?} This is a question, not a declarative sentence.
+\item[(d)] \emph{The integer $10^{10}$ is big}. Not a statement, since the word ``big'' is subjective; the truth value $(\text{T},\text{F})$ may depend on individuals.
+\end{itemize}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Logical Connectives}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Negation]
+Given a statement $P$, the \cdef{negation} of $P$ is the statement \[\textbf{not $\mathbold{P}$},\quad \text{denoted $\neg P$}\]
+It's characterised by the following \emph{truth table}
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering\arraybackslash}m{1cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $\neg P$\\
+\hline
+$\true$ & $\false$\\
+\hline
+$\false$ & $\true$\\
+\hline
+\end{tabular}
+}
+\end{center}
+\end{definition}
+
+\vspace*{1em}
+
+\begin{example}
+\begin{align*}
+P:&\text{ The integer $11$ is odd.}\\[0.5em]
+\neg P:&\text{ The integer $11$ is \emph{not} odd. $=$ The integer $11$ is even.}
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}[Disjunction]
+Given statements $P$ and $Q$, the \cdef{disjunction} of $P$ and $Q$ is the statement \[\textbf{$\mathbold{P}$ or $\mathbold{Q}$},\quad \text{denoted $P \vee Q$}\] By definition, $P \vee Q$ is true if at least one of $P$ or $Q$ is true. Its truth table is
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering\arraybackslash}m{1cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $Q$ & $P\vee Q$\\
+\hline
+$\true$ & $\true$ & $\true$\\
+\hline
+$\true$ & $\false$ & $\true$\\
+\hline
+$\false$ & $\true$ & $\true$\\
+\hline
+$\false$ & $\false$ & $\false$\\
+\hline
+\end{tabular}
+}
+\end{center}
+\end{definition}
+
+%\vspace*{1em}
+
+\begin{example}
+\begin{align*}
+P:\text{$5$ is odd.} &\quad\true\\[0.5em]
+Q:\text{$10$ is prime.} &\quad\false\\[0.5em]
+P\vee Q:\text{$5$ is odd or $10$ is prime.} &\quad\true
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}\label{example:pornot}
+Let $P$ be any statement, then $\mathbold{P}$ or \textbf{not $\mathbold{P}$} is always true. We see this by looking at the truth table.
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering\arraybackslash}m{2cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $\neg P$ & $P\vee (\neg P)$\\
+\hline
+$\true$ & $\false$ & $\true$\\
+\hline
+$\false$ & $\true$ & $\true$\\
+\hline
+\end{tabular}
+}
+\end{center}
+We call statements that are always true a \emph{tautology}.
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}[Conjunction]
+Given statements $P$ and $Q$, the \cdef{conjunction} of $P$ and $Q$ is the statement \[\textbf{$\mathbold{P}$ and $\mathbold{Q}$},\quad \text{denoted $P \wedge Q$}\] By definition, $P \wedge Q$ is true only when both $P$ and $Q$ are true. Its truth table is
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering\arraybackslash}m{1cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $Q$ & $P\vee Q$\\
+\hline
+$\true$ & $\true$ & $\true$\\
+\hline
+$\true$ & $\false$ & $\false$\\
+\hline
+$\false$ & $\true$ & $\false$\\
+\hline
+$\false$ & $\false$ & $\false$\\
+\hline
+\end{tabular}
+}
+\end{center}
+\end{definition}
+
+\vspace*{1em}
+
+\begin{definition}[Implication]
+Given statements $P$ and $Q$, the \cdef{implication} is the statement \[\textbf{if $\mathbold{P}$ then $\mathbold{Q}$},\quad \text{denoted $P \implies Q$}\]
+In this statement, $P$ is called the \emph{hypothesis}, while $Q$ is called the \emph{conclusion}. Its truth table is
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering\arraybackslash}m{1.5cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $Q$ & $P \implies Q$\\
+\hline
+$\true$ & $\true$ & $\true$\\
+\hline
+$\true$ & $\false$ & $\false$\\
+\hline
+$\false$ & $\true$ & $\true$\\
+\hline
+$\false$ & $\false$ & $\true$\\
+\hline
+\end{tabular}
+}
+\end{center}
+When hypothesis $P$ is not satisfied $(\false)$, then whatever the conclusion $Q$ may be $(\true,\false)$, the implication $P \implies Q$ is true.
+\end{definition}
+
+%\vspace*{1em}
+
+\begin{example}
+\begin{align*}
+P:&\text{ It is raining.}\\[0.5em]
+Q:&\text{ I will stay at home.}\\[0.5em]
+P\Rightarrow Q:&\text{ If it is raining, then I will stay at home.}
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}[Different Terminology for Implication]
+The statement $P \Rightarrow Q$ is read in several different ways.
+\begin{equation*}
+  \left.\begin{aligned}
+  \text{\emph{if $P$, then $Q$}}\\[0.5em]
+  \text{\emph{$P$ implies $Q$}}\\[0.5em]
+  \text{\emph{$Q$ if $P$}}\\[0.5em]
+  \text{\emph{$P$ only if $Q$}}\\[0.5em]
+  \text{$P$ is \emph{sufficient} for $Q$}\\[0.5em]
+  \text{$Q$ is \emph{necessary} for $P$}\\
+\end{aligned}\right\}\text{all mean $P \implies Q$}
+\end{equation*}
+\end{definition}
+
+\vspace*{1.5em}
+
+We have just seen four ways to create new statements from one or two given statements. In mathematics, however, we are often interested in declarative sentences containing variables and whose truth or falseness is only known once we have assigned values to the variables.
+\begin{definition}[Open Sentences]
+An \cdef{open\ sentence} is a declarative sentence which contains variables, where each variable can assume any value in a given set, called the \cdef{domain} of variables, which becomes a statement if variables are replaced by specific values. 
+\end{definition}
+
+\vspace*{1em}
+
+\begin{example}
+For $x \in \rr$, consider the statement $P(x):\abs{x} = 3$,
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1.5cm}|>{\centering}m{3cm}|>{\centering\arraybackslash}m{1cm}|}
+\hline
+$x = 1$ & $P(1) : \abs{1} = 3$ & $\false$\\
+\hline
+$x = -3$ & $P(-3) : \abs{-3} = 3$ & $\true$\\
+\hline
+$x = 2$ & $P(2) : \abs{2} = 3$ & $\false$\\
+\hline
+\end{tabular}
+}
+\end{center}
+\end{example}
+
+\vspace*{1em}
+
+We can combine open sentences using $\neg,\,\vee,\,\wedge,\,\implies$ to make new open sentences.
+\begin{example}
+\begin{align*}
+P(x):& \abs{x} = 3,\ x \in \rr & Q(x):& \abs{x} = -3,\ x \in \rr
+\end{align*}
+Consider then,
+\begin{align*}
+\neg P(x):& \abs{x} \neq 3 & \neg P(1) :& \abs{1} \neq 3 \quad (\true) \\[0.5em]
+P(x) \vee Q(x):& \abs{x} = 3 \text{ or } x = -3 & P(3) \vee Q(3) :& \abs{3} = 3 \text{ or } 3 = -3 \quad (\false)\\
+\end{align*}
+Now consider,
+\[Q(x) \implies P(x): \text{if $x = -3$, then $\abs{x} = 3$};\]
+this is an open sentence. 
+\begin{itemize}[leftmargin=4.5em,itemsep=1em]
+\item[$x = -3$,] $Q(-3) \implies P(-3): \text{if $-3 = -3$, then $\abs{-3} = 3$}$.\\[0.5em]
+Since both hypothesis and conclusion are true, this statement is $\true$. This is the \emph{everyday thought}.
+\item[$x = 2$,] $Q(2) \implies P(2): \text{if $2 = -3$, then $\abs{2} = 3$}$.\\[0.5em]
+Since the hypothesis is false, this implication statement is $\true$.
+\item[$x \neq -3$,] since the hypothesis is false, the implication statement $Q(x) \implies P(x)$ is $\true$.
+\end{itemize}
+Thus, \emph{for all choices of $x \in \rr$}, the open sentence
+\[Q(x) \implies P(x)\]
+is true. In other words, the open sentence
+\[\text{if $x = -3$, then $\abs{x} = 3$}\]
+is true for $x = -3$ case, as well as for all other choices of values of $x$. In everyday logic, we only consider the case $x = -3$. The above open sentence is a true statement whether the value of $x$ is $-3$ or not.
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}[Converse]
+The implication $Q \implies P$ is called the \cdef{converse} of $P \implies Q$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{definition}[Biconditional]
+Given statements $P$ and $Q$, the \cdef{biconditional} of $P$ and $Q$ is the statement \[(P \implies Q) \wedge (Q \implies P),\quad \text{denoted $P \iff Q$}\]
+That is, $P$ only if $Q$, and, $P$ if $Q$.\\
+\\
+We say,
+\begin{equation*}
+  \left\{\begin{aligned}
+  &\text{$P$ if and only if $Q$ (abbreviated as $P$ iff $Q$)}\\[0.5em]
+  &\text{$P$ is equivalent to $Q$}\\[0.5em]
+  &\text{$P$ is necessary $(Q \implies P)$ and sufficient $(P \implies Q)$ for $Q$}\\ 
+\end{aligned}\right.
+\end{equation*}
+The truth table is
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering}m{1.5cm}|>{\centering}m{1.5cm}|>{\centering\arraybackslash}m{3.75cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $Q$ & $P \implies Q$ & $Q \implies P$ & $(P \implies Q) \wedge (Q \implies P)$\\
+\hline
+$\true$ & $\true$ & $\true$ & $\true$ & $\true$\\
+\hline
+$\true$ & $\false$ & $\false$ & $\true$ & $\false$\\
+\hline
+$\false$ & $\true$ & $\true$ & $\false$ & $\false$\\
+\hline
+$\false$ & $\false$ & $\true$ & $\true$ & $\true$\\
+\hline
+\end{tabular}
+}
+\end{center}
+\vspace*{1em}
+Note that $P \iff Q$ is true only when both $P$ and $Q$ are true or false.
+\end{definition}
+
+%\vspace*{1em}
+
+\begin{remark}
+Biconditional statements arise in mathematical definitions; the way to formally talk about that is to introduce the notion of \emph{characterization}. Suppose some concept or object is expressed via an open sentence $P(x)$ over a domain $S$, and suppose $Q(x)$ is another open sentence concerning the same concept over the same domain $S$. Then $P(x)$ is said to be characterized by $Q(x)$ if for every $x\in S$, the statement $P(x) \iff Q(x)$ is true. For example a characterization for odd numbers is \emph{a number $n$ is odd if and only if $n-1$ is even.}
+\end{remark}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Compound Statements}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Compound Statements]
+A \cdef{compound\ statement} is a statement consisting of at least one statement involving at least one logical connectives $(\neg,\,\wedge,\,\vee,\,\implies,\,\iff)$. Each statement in a compound statement is called a \cdef{component\ statement}. The biconditional $P \iff Q$ is an example with component statements $P \implies Q$ and $Q \implies P$
+\end{definition}
+
+\vspace*{1em}
+
+\begin{definition}[Tautology and Contradiction]
+A compound statement is called a \cdef{tautology} if it is \emph{true} for all possible combinations of truth values for its component statements. We will denote any tautology as $\top$.\\[0.5em]
+A compound statement is called a \cdef{contradiction} if it is \emph{false} for all possible combinations of truth values for its component statements. We will denote any tautology as $\bot$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{example}\label{example:tautcontr}\hfill
+\begin{itemize}[itemsep=1em]
+\item[(1)] We have seen in Example \ref{example:pornot} that $P \vee (\neg P)$ is a tautology.
+
+\item[(2)] $P \wedge (\neg P)$ is a contradiction.
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering\arraybackslash}m{2cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $\neg P$ & $P\wedge (\neg P)$\\
+\hline
+$\true$ & $\false$ & $\false$\\
+\hline
+$\false$ & $\true$ & $\false$\\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\item[(3)] $(P \wedge (P \implies Q)) \implies Q$, ``assume $P$ and also assume $P$ implies $Q$, then $Q$'' , is a tautology. We check by building the truth table.
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering}m{1.5cm}|>{\centering}m{2.5cm}|>{\centering\arraybackslash}m{3.75cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $Q$ & $P \implies Q$ & $P \wedge (P \implies Q)$ & $(P \wedge (P \implies Q)) \implies Q$\\
+\hline
+$\true$ & $\true$ & $\true$ & $\true$ & $\true$\\
+\hline
+$\true$ & $\false$ & $\false$ & $\false$ & $\true$\\
+\hline
+$\false$ & $\true$ & $\true$ & $\false$ & $\true$\\
+\hline
+$\false$ & $\false$ & $\true$ & $\false$ & $\true$\\
+\hline
+\end{tabular}
+}
+\end{center}
+
+\item[(3)] $S:((P \implies Q) \wedge (Q \implies R)) \implies (P \implies R)$ is a tautology.
+%\begin{tabular}{|>{\centering\arraybackslash}m{6cm}|}
+%\hline
+%\rowcolor{lightgrey}
+%$((P \implies Q) \wedge (Q \implies R)) \implies (P \implies R)$\\
+%\hline
+%$\true$\\
+%\hline
+%$\true$\\
+%\hline
+%$\true$\\
+%\hline
+%$\true$\\
+%\hline
+%$\true$\\
+%\hline
+%$\true$\\
+%\hline
+%$\true$\\
+%\hline
+%$\true$\\
+%\hline
+%\end{tabular}
+\end{itemize} 
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{0.5cm}|>{\centering}m{0.5cm}|>{\centering}m{0.5cm}|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering}m{3cm}|>{\centering}m{1cm}|>{\centering\arraybackslash}m{5cm}|}
+\hline
+\rowcolor{lightgrey}
+{\footnotesize $P$} & {\footnotesize $Q$} & {\footnotesize $R$} & {\footnotesize $P \implies Q$} & {\footnotesize $Q \implies R$} & {\footnotesize $(P \implies Q) \wedge (Q \implies R)$} & {\footnotesize $P \implies R$} & {\footnotesize $((P \implies Q) \wedge (Q \implies R)) \implies (P \implies R)$}\\
+\hline
+$\true$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$\\
+\hline
+$\true$ & $\true$ & $\false$ & $\true$ & $\false$ & $\false$ & $\false$ & $\true$\\
+\hline
+$\true$ & $\false$ & $\true$ & $\false$ & $\true$ & $\false$ & $\true$ & $\true$\\
+\hline
+$\true$ & $\false$ & $\false$ & $\false$ & $\true$ & $\false$ & $\false$ & $\true$\\
+\hline
+$\false$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$\\
+\hline
+$\false$ & $\true$ & $\false$ & $\true$ & $\false$ & $\false$ & $\true$ & $\true$\\
+\hline
+$\false$ & $\false$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$\\
+\hline
+$\false$ & $\false$ & $\false$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$\\
+\hline
+\end{tabular}
+}
+\end{center}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Logical Equivalence}
+\end{center}
+\end{mdframed}
+
+\begin{definition}[Logical Equivalence]
+Two compound statements $R$ and $S$ are \cdef{logically\ equivalent} if they have the same truth value for all possible combinations of truth values for its component statements. We denote this as
+\[R \equiv S\]
+$R$ and $S$ are logically equivalent if and only if the biconditional statement $R \iff S$ is a tautology.  
+\end{definition}
+
+\vspace*{1em}
+
+\begin{theorem}\label{theorem:impliesequiv}
+Let $P$ and $Q$ be statements, then
+\[(P \implies Q) \equiv ((\neg P) \vee Q)\]
+\end{theorem}
+\begin{proof}
+We build the truth table and compare the truth values.
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering}m{1cm}||>{\centering}m{1.5cm}||>{\centering}m{2cm}||>{\centering\arraybackslash}m{4.25cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $Q$ & $\neg P$ & $P \implies Q$ & $(\neg P) \vee Q$ & $(P \implies Q) \iff ((\neg P) \vee Q)$\\
+\hline
+$\true$ & $\true$ & $\false$ & $\true$ & $\true$ & $\true$\\
+\hline
+$\true$ & $\false$ & $\false$ & $\false$ & $\false$ & $\true$\\
+\hline
+$\false$ & $\true$ & $\true$ & $\true$ & $\true$ & $\true$\\
+\hline
+$\false$ & $\false$ & $\true$ & $\true$ & $\true$ & $\true$\\
+\hline
+\end{tabular}
+}
+\end{center}
+So comparing the truth values of $P \implies Q$ and $(\neg P) \vee Q$ we see $(P \implies Q) \equiv ((\neg P) \vee Q)$, and the final column also tells us that $(P \implies Q) \iff ((\neg P) \vee Q)$ is a tautology.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}[Laws of Logical Equivalence]
+Let $P,\,Q$ and $R$ be statements, and let $\top$ and $\bot$ be a tautology and contradiction respectively, then
+\begin{itemize}[itemsep=1.5em]
+\item[(L1)] Identity laws
+\begin{align*}
+P \vee \bot &\equiv P\\[0.5em]
+P \wedge \top &\equiv P
+\end{align*}
+
+\item[(L2)] Domination laws
+\begin{align*}
+P \vee \top &\equiv \top\\[0.5em]
+P \wedge \bot &\equiv \bot
+\end{align*}
+
+\item[(L3)] Double Negation law
+\begin{align*}
+\neg(\neg P) &\equiv P
+\end{align*}
+
+
+\item[(L4)] Commutative laws
+\begin{align*}
+P \vee Q &\equiv Q \vee P\\[0.5em]
+P \wedge Q &\equiv Q \wedge P
+\end{align*}
+
+\item[(L5)] Associative laws
+\begin{align*}
+P \vee (Q \vee R) &\equiv (P \vee Q) \vee R\\[0.5em]
+P \wedge (Q \wedge R) &\equiv (P \wedge Q) \wedge R
+\end{align*}
+
+\item[(L6)] Distributive laws
+\begin{align*}
+P\, {\color{newblue}\vee}\, (Q\, {\color{firebrick}\wedge}\, R) &\equiv (P\, {\color{newblue}\vee}\, Q)\, {\color{firebrick}\wedge}\, (P\, {\color{newblue}\vee}\, R)\\[0.5em]
+P\, {\color{firebrick}\wedge}\, (Q\, {\color{newblue}\vee}\, R) &\equiv (P\, {\color{firebrick}\wedge}\, Q)\, {\color{newblue}\vee}\, (P\, {\color{firebrick}\wedge}\, R)
+\end{align*}
+
+\item[(L7)] De Morgan's laws
+\begin{align*}
+\text{(L7a)}\quad\neg (P \vee Q) &\equiv (\neg P) \wedge (\neg Q)\\[0.5em]
+\text{(L7b)}\quad\neg (P \wedge Q) &\equiv (\neg P) \vee (\neg Q)
+\end{align*}
+\end{itemize}
+\end{theorem}
+\vspace*{0.5em}
+\begin{proof}
+We simply have to build the appropriate truth tables. For example, for (L7a) we have\\
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering}m{1.5cm}||>{\centering}m{1.75cm}||>{\centering}m{1cm}|>{\centering}m{1cm}||>{\centering\arraybackslash}m{2.5cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $Q$ & $P \vee Q$ & $\neg(P \vee Q)$ & $\neg P$ & $\neg Q$ & $(\neg P) \wedge (\neg Q)$\\
+\hline
+$\true$ & $\true$ & $\true$ & $\false$ & $\false$ & $\false$ & $\false$\\
+\hline
+$\true$ & $\false$ & $\true$ & $\false$ & $\false$ & $\true$ & $\false$\\
+\hline
+$\false$ & $\true$ & $\true$ & $\false$ & $\true$ & $\false$ & $\false$\\
+\hline
+$\false$ & $\false$ & $\false$ & $\true$ & $\true$ & $\true$ & $\true$\\
+\hline
+\end{tabular}
+}
+\end{center}
+\vspace*{0.5em}
+Comparing the truth values, we see $\neg (P \vee Q) \equiv (\neg P) \wedge (\neg Q)$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+Show $\neg(P \implies Q) \equiv (P \wedge (\neg Q))$
+\begin{itemize}
+\item[] \emph{Method 1.} Build truth table
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering}m{1.5cm}|>{\centering}m{2cm}|>{\centering}m{1cm}|>{\centering\arraybackslash}m{2cm}|}
+\hline
+\rowcolor{lightgrey}
+$P$ & $Q$ & $P \implies Q$ & $\neg(P \implies Q)$ & $\neg Q$ & $P \wedge \neg Q$\\
+\hline
+$\true$ & $\true$ & $\true$ & $\false$ & $\false$ & $\false$\\
+\hline
+$\true$ & $\false$ & $\false$ & $\true$ & $\true$ & $\true$\\
+\hline
+$\false$ & $\true$ & $\true$ & $\false$ & $\false$ & $\false$\\
+\hline
+$\false$ & $\false$ & $\true$ & $\false$ & $\true$ & $\false$\\
+\hline
+\end{tabular}
+}
+\end{center}
+Comparing the truth values, we see $\neg(P \implies Q) \equiv (P \wedge (\neg Q))$.
+\item[] \emph{Method 2.} Use the logical equivalence laws
+\begin{align*}
+\neg(P \implies Q) &\equiv \neg ((\neg P) \vee Q) && \text{by Theorem \ref{theorem:impliesequiv}}\\[0.5em]
+ &\equiv \neg(\neg P) \wedge (\neg Q) && \text{by De Morgan's laws}\\[0.5em]
+ &\equiv P \wedge (\neg Q) && \text{by Double Negation law}
+\end{align*}
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}
+Show $((\neg Q) \implies (P \wedge \neg P)) \equiv Q$
+\begin{itemize}
+\item[] \emph{Method 1.} Build truth table (sure, but a tedious way)
+\item[] \emph{Method 2.} Use the logical equivalence laws
+\begin{align*}
+((\neg Q) \implies (P \wedge \neg P)) &\equiv (\neg(\neg Q) \vee (P \wedge \neg P)) && \text{by Theorem \ref{theorem:impliesequiv}}\\[0.5em]
+ &\equiv (\neg(\neg Q) \vee \bot) && \text{by Example \ref{example:tautcontr} (2)}\\[0.5em]
+ &\equiv \neg(\neg Q) && \text{by Identity laws}\\[0.5em]
+ &\equiv Q && \text{by Double Negation law}
+\end{align*}
+\end{itemize}
+The above statement says ``if negation of $Q$ implies a contradiction, then $Q$ is true''.
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}
+Show $((P \wedge \neg Q) \implies (R \wedge \neg R)) \equiv (P \implies Q)$
+\begin{itemize}
+\item[] \emph{Method 1.} Build truth table (sure, but a tedious way)
+\item[] \emph{Method 2.} Use the logical equivalence laws
+\begin{align*}
+((P \wedge \neg Q) \implies (R \wedge \neg R)) &\equiv (\neg(P \wedge \neg Q) \vee (R \wedge \neg R)) && \text{by Theorem \ref{theorem:impliesequiv}}\\[0.5em]
+ &\equiv (\neg(P \wedge \neg Q) \vee \bot) && \text{by Example \ref{example:tautcontr} (2)}\\[0.5em]
+ &\equiv \neg(P \wedge \neg Q) && \text{by Identity laws}\\[0.5em]
+ &\equiv \neg P \vee \neg(\neg Q) && \text{by De Morgan's laws}\\[0.5em]
+ &\equiv \neg P \vee Q && \text{by Double Negation law}\\[0.5em]
+ &\equiv P \implies Q && \text{by Theorem \ref{theorem:impliesequiv}}
+\end{align*}
+\end{itemize}
+The above equivalence is the ``\emph{proof by contradiction}''. To show $P \implies Q$, do the following. Assume the hypothesis $P$ is true but the conclusion $Q$ is false. If you can deduce a contradiction $(R \wedge \neg R)$, then $P \implies Q$ is true.
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Quantified Statements}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}[Quantifiers]
+Let $P(x)$ be an open sentence over a domain $S$. Recall that $P(x)$ becomes a statement once we specify an $x \in S$. We can produce specific kinds of statements from this open sentence called \cdef{quantified\ statements}.
+\begin{itemize}[itemsep=1em]
+\item \emph{for all $x \in S,\ P(x)$ is true}.\\[0.5em]
+The phrase ``for all'' is referred to as the \cdef{universal\ quantifier} and is denoted by the symbol $\forall$. Other ways to express the universal quantifier are ``for every'', ``for any'' and ``for each''. Symbolically, we express the universally quantified statement as
+\[\forall x \in S,\ P(x)\]
+The statement is true if $P(x)$ is true for every $x \in S$.
+
+\item \emph{there exists $x \in S$ such that $P(x)$ is true}.\\[0.5em]
+The phrase ``there exists'' is referred to as the \cdef{existential\ quantifier} and is denoted by the symbol $\exists$. Symbolically, we express the existentially quantified statement as
+\[\exists x \in S,\ P(x)\]
+The statement is true if $P(x)$ is true for at least one $x \in S$.
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Consider the open sentence
+\[P(n):n^2 + n \text{ is even}\]
+with domain $\zz$, the set of integers. Then, we have statements
+\begin{align*}
+\text{for all $n \in \zz$, $n^2 + n$ is even.}&\qquad \forall n \in \zz,\ P(n) \qquad (\true)\\[0.5em]
+\text{there exists an $n \in \zz$ such that $n^2 + n$ is even.}&\qquad \exists n \in \zz,\ P(n) \qquad (\true)
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{discussion}[Negation of Quantified Statements]\hfill
+\begin{align*}
+\neg (\forall x\in S,\ P(x)) &= \text{it is not the case that for all $x \in S$, $P(x)$ is true.}\\[0.5em]
+ &= \text{there exists $x \in S$ such that $P(x)$ is false.}\\[0.5em]
+ &= \exists x\in S,\ \neg P(x)\\[1em]
+ \neg (\exists x\in S,\ P(x)) &= \text{it is not the case that there exists $x \in S$ such that $P(x)$ is true.}\\[0.5em]
+ &= \text{for all $x \in S$, $P(x)$ is false.}\\[0.5em]
+ &= \forall x\in S,\ \neg P(x)
+\end{align*}
+\end{discussion}
+
+%\vspace*{1em}
+
+\begin{discussion}[Summarising Negation Rules]
+\begin{equation*}
+\text{under negation}\left\{\begin{aligned}
+	\wedge &\leftrightarrow \vee\\[0.5em]
+	\forall &\leftrightarrow \exists\\[0.5em]
+	P(x) &\leftrightarrow \neg P(x)
+\end{aligned}\right.
+\end{equation*}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{discussion}[Double Quantifiers and their Negation]
+Let $x \in S$ and $y \in T$ be variables. Consider,
+\begin{align*}
+\forall x \in S,\ \forall y \in T,\ P(x,y)\\[0.5em]
+\text{\emph{for all $x \in S$ and $y \in T$, $P(x,y)$ is true.}}
+\end{align*}
+The negation is
+\begin{align*}
+\neg(\forall x \in S,\ \forall y \in T,\ P(x,y)) &\equiv \exists x \in S,\neg(\forall y \in T,\ P(x,y))\\[0.5em]
+&\equiv \exists x \in S,\ \exists y \in T,\ \neg P(x,y)\\
+\end{align*}
+For example, consider the statement \emph{for all $x \in \rr$ and $y \in \rr$, $x^2 + y^2 > 0$.}
+\[\text{Negation: \emph{there exists $x \in \rr$ and $y \in \rr$ such that $x^2 + y^2 \leq 0$}.}\]
+This is $\true$, since for $x = y = 0$ we have $x^2 + y^2 = 0$.\\
+\\
+Similarly,
+\begin{align*}
+\neg(\forall x \in S,\ \exists y \in T,\ P(x,y)) &\equiv \exists x \in S,\neg(\exists y \in T,\ P(x,y))\\[0.5em]
+&\equiv \exists x \in S,\ \forall y \in T,\ \neg P(x,y)
+\end{align*}
+In other words,
+\begin{align*}
+\neg(\text{for all $x \in S$,} &\text{ there exists $y \in T$ such that $P(x,y)$ is true})\\[0.5em]
+&\equiv \text{there exists $x \in S$ such that for all $y \in T$, $P(x,y)$ is true}\\
+\end{align*}
+Finally,
+\begin{align*}
+\neg(\exists x \in S,\ \forall y \in T,\ P(x,y)) &\equiv \forall x \in S,\ \exists y \in T,\ \neg P(x,y)\\[0.5em]
+\neg(\exists x \in S,\ \exists y \in T,\ P(x,y)) &\equiv \forall x \in S,\ \forall y \in T,\ \neg P(x,y)
+\end{align*}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}[Finding Negation]
+We'll negate the following statement
+\[\emph{for all integers $a,b$, if their product is even, then $a$ is even or $b$ is even}\]
+To find the negation, we identify the component statements and re-write symbolically. Consider the following open sentences over $\zz$ as the domain
+\begin{align*}
+P(x,y)&:\text{the product $xy$ is even.}\\[0.5em]
+Q(x)&:\text{$x$ is even.}
+\end{align*}
+Using these open sentences, our statement is
+\[\forall a\in \zz,\forall b \in \zz,\ P(a,b) \implies (Q(a) \vee Q(b))\]\newpage
+To negate this statement, we need to recall how to negate the implication. We can do this using the logical equivalence laws.\\[0.25em]
+\begin{subproof}
+For statements $U,\,V$, what could be the $\neg(U \implies V)$? Recall from Theorem \ref{theorem:impliesequiv} that
+\[(U \implies V) \equiv (\neg U \vee V)\]
+Therefore,
+\begin{align*}
+\neg(U \implies V) &\equiv \neg(\neg U \vee V)\\[0.5em]
+ &= \neg(\neg U) \wedge \neg V && \text{by De Morgan's Laws}\\[0.5em]
+ &= U \wedge \neg V && \text{by Double Negation Law}
+\end{align*}
+Therefore, (negation of $U \implies V$) is ($U$ and not $V$).
+\end{subproof}
+\vspace*{1em}
+Let's go back to our problem,
+\begin{align*}
+\neg(\forall a\in \zz,\forall b \in \zz,&\ P(a,b) \implies (Q(a) \vee Q(b)))\\[0.5em]
+&\equiv \exists a \in \zz,\ \exists \in \zz, \neg(P(a,b) \implies (Q(a) \vee Q(b))\\[0.5em]
+&\equiv \exists a \in \zz,\ \exists \in \zz, P(a,b) \wedge \neg(Q(a) \vee Q(b))\\[0.5em]
+&\equiv \exists a \in \zz,\ \exists \in \zz, P(a,b) \wedge (\neg Q(a) \wedge \neg Q(b)) && \text{by De Morgan's Laws}
+\end{align*}
+Thus, the negation of our statement is
+\[\emph{there exist integers $a,b$ such that their product is even \emph{and} $a$ is odd \emph{and} $b$ is odd}\]
+\end{example}

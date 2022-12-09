@@ -1,0 +1,463 @@
+\begin{mdframed}
+\begin{center}
+{\Large Divisibility of Integers}
+\end{center}
+\end{mdframed}
+
+\begin{definition}
+For $a,\,b \in \zz$, we say $a$ divides $b$ if (and only if) there exists an integer $c$ such that $b = ac$. We have the following notation,
+\begin{align*}
+\text{$a$ divides $b$}&:a\mid b\\[0.5em]
+\text{$a$ \emph{does not} divide $b$}&:a\nmid b
+\end{align*}
+\end{definition}
+
+\vspace*{1em}
+
+\begin{lemma}
+If $a\mid b$ and $b \mid c$, then $a\mid c$.
+\end{lemma}
+\begin{proof}
+Since $a\mid b$ and $b \mid c$, there exist integers $d$ and $e$ such that
+\[b = ad \quad \text{and} \quad c = be\]
+Then, $c = be = (ad)e = a(de)$. Since $de$ is an integer, $a\mid c$. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{proposition}\label{prop:paritymod4}
+If $a$ and $b$ are integers that have the same parity, then $4\mid (a^2 - b^2)$. 
+\end{proposition}
+\begin{proof}[Experiment]
+\renewcommand{\qed}{}
+\begin{align*}
+a = 5,\, b = 3 & \text{ (both odd) } a^2 - b^2 = 25 - 9 = 16 \text{ and } 4\mid 16\\[0.5em]
+a = 6,\, b = 2 & \text{ (both even) } a^2 - b^2 = 36 - 4 = 32 \text{ and } 4\mid 32\\[0.5em]
+&\vdots
+\end{align*}
+do more experiments.
+\end{proof}
+\begin{proof}
+We encounter two cases. 
+\begin{itemize}[leftmargin=4em]
+\item[Case 1.] Suppose $a$ and $b$ are even. So we may write $a = 2k$ and $b = 2\ell$ for integers $k,\ell$. Then,
+\begin{align*}
+a^2 - b^2 &= (2k)^2 - (2\ell)^2\\[0.5em]
+ &= 4(k^2 - \ell^2)
+\end{align*}
+Since $k^2 - \ell^2$ is an integer, $4\mid (a^2 - b^2)$.
+\item[Case 2.] Suppose $a$ and $b$ are odd. So we may write $a = 2k + 1$ and $b = 2\ell + 1$ for integers $k,\ell$. Then,
+\begin{align*}
+a^2 - b^2 &= (2k + 1)^2 - (2\ell + 1)^2\\[0.5em]
+ &= (4k^2 + 4k + 1) - (4\ell^2 + 4\ell + 1)\\[0.5em]
+ &= 4(k^2 - \ell^2 + k - \ell)
+\end{align*}
+Since $k^2 - \ell^2 + k - \ell$ is an integer, $4\mid (a^2 - b^2)$.
+\end{itemize}
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+To \emph{understand} why this statement in Proposition \ref{prop:paritymod4} is true, we present a more illuminating argument. Note that,
+\[a^2 - b^2 = (a+b)(a-b)\]
+We have seen earlier that if $a$ and $b$ have the same parity, then $a+b$ is even. Since $a - b = (a + b) - 2b$, and since $a+b$ and $2b$ are both even, we note that $a - b$ is also even. So, $a+ b$ and $a - b$ are divisible by $4$. We do this more formally.
+\end{remark}
+
+\vspace*{1em}
+
+\begin{lemma}
+For two integers $a$ and $b$ with the same parity, both $a+b$ and $a-b$ are even.
+\end{lemma}
+\begin{proof}
+We leave the proof to the reader.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{proof}[Another Proof of Proposition \ref{prop:paritymod4}]
+Since $a+b$ and $a - b$ are even, by the lemma above, we write $a+b = 2k$ and $a - b = 2\ell$ for integers $k,\ell$. So we have $a^2 - b^2 = (a +b)(a - b) = (2k)(2\ell) = 4k\ell$. Since $k\ell$ is an integer, $4\mid(a^2 - b^2)$.
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Congruence}
+\end{center}
+\end{mdframed}
+Let $n$ be a positive integer such that $n \geq 2$
+
+\begin{definition}
+For two integers $a$ and $b$, $a$ is congruent to $b$ modulo $n$, denoted
+\begin{align*}
+a \equiv b \modar{n} & \text{ if and only if } n \mid (a - b)\\[0.5em]
+ & \text{ if and only if } a - b = nk, \text{ for some } k \in \zz\\[0.5em]
+ & \text{ if and only if } a = b + nk, \text{ for some } k \in \zz\\[0.5em]
+ & \text{ if and only if $a$ and $b$ have the same remainder when divided by $n$}
+\end{align*}
+\end{definition}
+
+\vspace*{1em}
+
+\begin{proposition}[Arithmetic Properties of Congruence]\label{prop:congruencearith}
+Suppose $a \equiv b \modar{n}$ and $c \equiv d \modar{n}$, then
+\begin{itemize}
+\item[(1)] add side-by-side
+\[a + c \equiv b + d \modar{n}\]
+\item[(2)] multiply side-by-side
+\[ac \equiv bd \modar{n}\]
+\end{itemize}
+\end{proposition}
+\begin{proof}
+By hypothesis, $a = b + nk$ and $c = d + n\ell$ for integer $k,\ell$. Then, adding and multiplying side-by-side we get
+\begin{align*}
+a + c &= (b + nk) + (d + n\ell)\\[0.5em]
+ &= (b + d) + n(k + \ell)
+\end{align*}
+\begin{align*}
+ac &= (b + nk)(d + n\ell)\\[0.5em]
+ &= bd + nb\ell + ndk + n^2k\ell\\[0.5em]
+ &= bd + n(b\ell + dk + nk\ell)
+\end{align*}
+Therefore $a+c \equiv b+d \modar{n}$ and $ac \equiv bd \modar{n}$.
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{proposition}
+For an integer $n$, show that if $n^2 \not\equiv n \modar{3}$, then $n \equiv 2 \modar{3}$.
+\end{proposition}
+\begin{proof}[Strategy]\hfill
+\renewcommand{\qed}{}
+\begin{itemize}
+\item[(1)] Experiment
+\begin{align*}
+n = 6,\ 6 \equiv 0 \modar{3}, &\ 6^2 = 36 \equiv 6 \modar{3}\\[0.5em]
+n = 5,\ 5 \equiv 2 \modar{3}, &\ 5^2 = 25 \not\equiv 5 \modar{3}\\[0.5em]
+&\vdots
+\end{align*}
+\item[(2)] Try direct proof.
+\item[(3)] Try contrapositive: if $n \not\equiv 2 \modar{3}$, then $n^2 \equiv n \modar{3}$. Note that $n \not\equiv 2 \modar{3}$ is equivalent to $n \equiv 0,1 \modar{3}$. So, we prove
+\[\text{if $n \equiv 0,1 \modar{3}$, then $n^2 \equiv n \modar{3}$.}\]
+\end{itemize}
+\end{proof}
+\begin{proof}
+We prove the contrapositive, and so we encounter two cases. 
+\begin{itemize}[leftmargin=4em]
+\item[Case 1.] Suppose $n \equiv 0 \modar{3}$, then by Proposition \ref{prop:congruencearith}
+\[n^2 \equiv 0^2 \modar{3}\]
+Therefore $n^2 \equiv 0 \equiv n \modar{3}$.
+Since $k^2 - \ell^2$ is an integer, $4\mid (a^2 - b^2)$.
+\item[Case 2.] Suppose $n \equiv 1 \modar{3}$, then by Proposition \ref{prop:congruencearith}
+\[n^2 \equiv 1^2 \modar{3}\]
+Therefore $n^2 \equiv 1 \equiv n \modar{3}$.
+\end{itemize}
+Hence in both cases $n^2 \equiv n \modar{3}$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+Let $n \in \zz$. If $11n - 7$ is even, then $n$ is odd.\\
+\\
+Earlier we proved statements of this type by proving the contrapositive: if $n$ is even, $11n - 7$ is odd. But now using congruence relations, we can give a direct proof.
+\end{example}
+\begin{proof}
+Since $11n - 7$ is even, we have $11n - 7 \equiv 0 \modar{2}$, and naturally $7 \equiv 7 \modar{2}$. Adding the two we get, using Proposition \ref{prop:congruencearith}
+\[11n \equiv 7 \modar{2}\]
+Let's focus on the right hand side of the congruence relation; naturally we have $7 \equiv 1 \modar{2}$. For the left hand side, note that we have $11 \equiv 1 \modar{2}$ and naturally $n \equiv n \modar{2}$; multiplying, using Proposition \ref{prop:congruencearith}, we have $11n \equiv n \modar{2}$.\\
+\\
+Combining $7 \equiv 1 \modar{2}$ and $11n \equiv n \modar{2}$, we get $n \equiv 1 \modar{2}$. Thus, $n$ is odd. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+For all integers $n$, we have $n^3 \equiv n \modar{3}$.\\
+\\
+Meaning
+\begin{itemize}
+\item $n^3$ and $n$ leave the same remainder when divided by $3$; or
+\item $n^3 - n$ is divisible by $3$.
+\end{itemize}
+\end{example}
+\begin{proof}[Experiment]\hfill
+\renewcommand{\qed}{}
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{c|cccccccc}
+$n$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $\cdots$\\
+\hline
+$n \modar{3}$ & $1$ & $2$ & $0$ & $1$ & $2$ & $0$ & $1$ & $\cdots$\\
+\hline
+$n^3$ & $1$ & $8$ & $27$ & $64$ & $125$ & $216$ & $\cdots$ & $\cdots$\\
+\hline
+$n^3\modar{3}$ & $1$ & $2$ & $0$ & $1$ & $2$ & $0$ & $\cdots$ & $\cdots$
+\end{tabular}
+}
+\end{center}
+\end{proof}
+\begin{proof}
+We prove the congruence relation by treating three cases: $n \equiv 0,1,2 \modar{3}$. \emph{(checking congruence relations case by case is a standard approach.)}
+\begin{itemize}[leftmargin=4em]
+\item[Case 1.] Suppose $n \equiv 0 \modar{3}$, using Proposition \ref{prop:congruencearith}, multiplying it with itself thrice get us $n^3 \equiv 0^3 \modar{3}$. Therefore $n^3 \equiv 0 \modar{3}$, and hence $n^3 \equiv n \modar{3}$, in this case. 
+\item[Case 2.] Suppose $n \equiv 1 \modar{3}$, using Proposition \ref{prop:congruencearith}, multiplying it with itself thrice get us $n^3 \equiv 1^3 \modar{3}$. Therefore $n^3 \equiv 1 \modar{3}$, and hence $n^3 \equiv n \modar{3}$, in this case. 
+\item[Case 3.] Suppose $n \equiv 2 \modar{3}$, using Proposition \ref{prop:congruencearith}, multiplying it with itself thrice get us $n^3 \equiv 2^3 \modar{3}$. Therefore \[n^3 \equiv 8 \equiv 2 \modar{3},\] and hence $n^3 \equiv n \modar{3}$, in this case. 
+\end{itemize}
+This completes the proof.
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Inequalities of Real Numbers}
+\end{center}
+\end{mdframed}
+
+\begin{example}\label{example:lec5}
+For $x, y \in \rr$, show that
+\[\frac{1}{3}\,x^2 + \frac{3}{4}\,y^2 \geq xy\]
+\end{example}
+\begin{proof}[Some Basics]\hfill
+\renewcommand{\qed}{}
+\begin{itemize}
+\item[(1)] For every real number $x$, we have $x^2 \geq 0$.
+\item[(2)] The show $\mathrm{L.H.S.} \geq \mathrm{R.H.S.}$, prove that
+\[\mathrm{L.H.S.} - \mathrm{R.H.S.} \geq 0\]
+In some cases, one can show this by expressing $\mathrm{L.H.S.} - \mathrm{R.H.S.} = (\text{some real number})^2$.
+\end{itemize}
+\end{proof}
+\begin{proof}
+We take the difference of the $\mathrm{R.H.S.}$ from the $\mathrm{L.H.S.}$ and get
+\begin{align*}
+\frac{1}{3}\,x^2 + \frac{3}{4}\,y^2 - xy &= \frac{1}{12}\left(4x^2 - 12xy + 9y^2\right)\\[0.5em]
+ &= \frac{1}{12}\left((2x)^2 - 2(2x)(3y) + (3y)^2\right)\\[0.5em]
+ &= \frac{1}{12}(2x - 3y)^2 \geq 0
+\end{align*}
+Hence,
+\[\frac{1}{3}\,x^2 + \frac{3}{4}\,y^2 \geq xy\]
+for all $x, y \in \rr$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+For $x, y, z \in \rr$, show that
+\[x^2 + y^2 + z^2 \geq xy + yz + zw\]
+\end{example}
+\begin{proof}[Experiment]
+\renewcommand{\qed}{}
+\begin{align*}
+x = y = z = 1; & \quad 1^2 + 1^2 + 1^2 = 1\cdot 1 + 1\cdot 1 + 1\cdot 1\\[0.5em]
+x = 2,\,y = -1,\,z = 1; & \quad \underbrace{2^2 + (-1)^2 + 1^2}_{=6} \geq \underbrace{2\cdot(-1) + (-1)\cdot 1 + 1\cdot 2}_{=-1}
+\end{align*}
+\end{proof}
+\begin{proof}
+We take the difference of the $\mathrm{R.H.S.}$ from the $\mathrm{L.H.S.}$ and get
+\[x^2 + y^2 + z^2 - xy - yz - zw\]
+\vspace*{-0.5em}
+\begin{subproof}
+\begin{proof}[Scratch Notes]
+\renewcommand{\qed}{}
+Our first instinct would be to somehow involve 
+\[(x + y + z)^2 = x^2 + y^2 + z^2 + 2xy + 2yz + 2zw \geq 0\]
+Which the would give us,
+\begin{align*}
+x^2 + y^2 + z^2 - xy - yz - zw &= (x + y + z)^2 - (2xy + 2yz + 2zw) - xy - yz - zw\\[0.5em]
+ &= (x + y + z)^2 - (3xy + 3yz + 3zw)
+\end{align*}
+We reach an impasse, because while $(x + y + z)^2 \geq 0$ but what about $3xy + 3yz + 3zw$, and what about the difference? We may need a different approach. We do know that $x^2 - 2xy + y^2 = (x - y)^2 \geq 0$. What can we do about the remaining terms $z^2,\,-yz,\,-zx$?
+\end{proof}
+\end{subproof}
+\vspace*{1em}
+Multiply $2$ to our given expression, and we have
+\begin{align*}
+2x^2 + 2y^2 + 2z^2 - 2xy - 2yz - 2zw &= (x^2 - 2xy + y^2) + (y^2 - 2yz + z^2) + (z^2 - 2zx + x^2)\\[0.5em]
+ &= (x-y)^2 + (y - z)^2 + (z - x)^2 \geq 0 
+\end{align*}
+Thus, $x^2 + y^2 + z^2 - xy - yz - zw \geq 0$, and hence we have proven $x^2 + y^2 + z^2 \geq xy + yz + zw$.
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{proposition}[AM $\geq$ GM]\label{arithgeomean}
+Given $x_1,x_2,\ldots,x_n \in \rr_{\geq 0}$ (non-negative real numbers), we have \[\underbrace{\frac{x_1 + x_2 + \cdots + x_n}{n}}_{\text{arithmetic mean}} \geq \underbrace{\sqrt[n]{x_1x_2\cdots x_n}}_{\text{geometric mean}}\]
+Equality holds exactly when $x_1 = x_2 = \cdots = x_n$.
+\end{proposition}
+\begin{proof}
+The case for $n = 2$ is very useful. Let $x = x_1$ and $y = x_2$, we need to prove
+\[\frac{x+y}{2} \geq \sqrt{xy}\]
+Recall that we have assumed $x,\,y \geq 0$; let $a = \sqrt{x}$ and $b = \sqrt{y}$. Taking the relevant difference we note
+\begin{align*}
+\frac{x+y}{2} - \sqrt{xy} &= \frac{a^2 + b^2}{2} - ab\\[0.5em]
+ &= \frac{1}{2}\left(a^2  - 2ab + b^2\right) = \frac{1}{2}(a - b)^2 \geq 0
+\end{align*}
+Let's also look at this result for $n = 3$. Let $x = x_1,\ y = x_2$ and $z = x_3$, we need to prove
+\[\frac{x+y+z}{3} \geq \sqrt[3]{xyz}\]
+Recall that we have assumed $x,\,y,\,z \geq 0$; let $a = \sqrt[3]{x},\,b = \sqrt[3]{y}$ and $c = \sqrt[3]{z}$. Taking the relevant difference we note
+\begin{align*}
+\frac{x+y+z}{3} - \sqrt[3]{xyz} &= \frac{a^3 + b^3 + c^3}{3} - 3abc\\[0.5em]
+ &= \frac{1}{3}\left(a^3 + b^3 + c^3  - 3abc\right)\\[0.5em]
+ &= \frac{1}{3}(a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca) \geq 0
+\end{align*}
+since $a,b,c \geq 0$ and we've already noted that $a^2 + b^2 + c^2 - ab - bc - ca \geq 0$.\\
+\\
+We'll skip the general proof. We will soon introduce a method of proof that is appropriately suited for such problems. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}[Revisiting Example \ref{example:lec5}]
+For $x, y \in \rr$, show that
+\[\frac{1}{3}\,x^2 + \frac{3}{4}\,y^2 \geq xy\]
+\end{example}
+\begin{proof}
+We can use Proposition \ref{arithgeomean}
+\begin{align*}
+\frac{1}{2}\left(\frac{1}{3}\,x^2 + \frac{3}{4}\,y^2\right) \geq \sqrt{\frac{1}{3}\,x^2 \cdot \frac{3}{4}\,y^2} &= \sqrt{\frac{x^2y^2}{4}} = \frac{\abs{x}\abs{y}}{2}\\[1em]
+\frac{1}{3}\,x^2 + \frac{3}{4}\,y^2 &\geq \abs{x}\abs{y} \geq xy\\[-3em]
+\end{align*}
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Sets}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+We have the following strategies for proving statements involving sets
+\begin{itemize}
+\item[(1)] Use Venn diagrams.
+\item[(2)] Using element-wise arguments.
+\item[(3)] Using basic inclusion relations among sets. For example, $A \cap B \subseteq A,\,B \subseteq A \cup B$.
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}\label{example:set-proof}\hfill
+\begin{itemize}[itemsep=1.5em]
+\item[(1)] Show that $A \setminus B = A \cap B^c$.\\[-2em]
+\begin{proof}
+We give a proof using Venn diagrams (already seen in Proposition \ref{prop:set-id} (1)).
+
+\begin{minipage}{0.5\textwidth}
+\[\begin{tikzpicture}[scale=0.7]
+\filldraw[fill=newblue,fill opacity=1/5,thick] (-3.75,-2.25) rectangle (3.75,2.25);
+	\def\firstcircle{(0:1) ellipse (2cm and 1.5cm)};
+    \def\secondcircle{(0:-1) ellipse (2cm and 1.5cm)};
+\filldraw[fill=white,thick] \secondcircle;
+\filldraw[fill=firebrick,fill opacity=1/5,thick] \firstcircle;
+\node at (0:0.5)    {$A$};
+\node[above,yshift=2em] at (0:-3)    {$B^c$};
+\node[left,xshift=-3pt] at (-3.75,0){$U$};
+\node[below,yshift=-5pt] at (0,-2.25){$A \cap B^c$};
+\end{tikzpicture}\]
+\end{minipage}\hspace*{-1em}$=$\hspace*{-1em}
+\begin{minipage}{0.5\textwidth}
+\[\begin{tikzpicture}[scale=0.7]
+	\def\firstcircle{(0:1) ellipse (2cm and 1.5cm)};
+    \def\secondcircle{(0:-1) ellipse (2cm and 1.5cm)};
+    	\begin{scope}[even odd rule]
+    		\clip \secondcircle (-2,-2) rectangle (3,3);
+    		\fill[indigo,opacity=1/5] \firstcircle;
+	\end{scope}
+\draw[thick] \firstcircle;
+\draw[thick] \secondcircle;
+\node at ( 0:2)    {$A$};
+\node at (0:-2)    {$B$};
+\draw[thick] (-3.75,-2.25) rectangle (3.75,2.25);
+\node[right,xshift=3pt] at (3.75,0){$U$};
+\node[below,yshift=-5pt] at (0,-2.25){$A \setminus B$};
+\end{tikzpicture}\]
+\end{minipage}
+Therefore $A\setminus B = A \cap B^c$, as noted by the Venn diagram above. 
+\end{proof}
+
+\item[(2)] Show that $A \cup B = A$ if and only if $B \subseteq A$.\\
+\begin{subproof}
+\begin{proof}[Scratch Notes]\hfill
+\renewcommand{\qed}{}
+\begin{itemize}
+\item[(a)] Since we are being asked to prove an ``if and only if'' statement, that is, a biconditional payment, we need to prove two things:
+\begin{align*}
+&\text{if $A \cap B = A$, then $B \subseteq A$}
+&\text{if $B \subseteq A$, then $A \cap B = A$}
+\end{align*}
+\item[(b)] To show set equality $X = Y$, we need to show two inclusions: $X \subseteq Y$ and $Y \subseteq X$. 
+\item[(c)] To show set inclusion $U \subseteq V$ is equivalent to showing that
+\[\text{if $x \in U$, then $x \in V$}\]
+\end{itemize}
+\end{proof}
+\end{subproof}
+
+\begin{proof}
+First we show that if $A \cup B = A$, then $B \subseteq A$. Let us consider an arbitrary $x \in B$. Since $B \subseteq A \cup B$, we therefore also have $x \in A \cup B$. By hypothesis $A \cup B = A$, and hence $x \in A$. Thus, $B \subseteq A$. \\
+\\
+Let us now show that if $B \subseteq A$, then $A \cup B = A$. For this, we need to show (i) $A \subseteq A \cup B$; and (ii) $A \cup B \subseteq A$. Note that we have (i) for free, we really need to only show (ii). Let us consider an arbitrary $x \in A \cup B$. Then $x \in A$ or $x \in B$. If $x \in A$, then we have nothing to show since $x \in A$ already. Now, if $x \in B$, then since we have our hypothesis $B \subseteq A$, we also have $x \in A$. So, in the both cases $x \in A$. Thus, we have proven that $A \cup B \subseteq A$.\\
+\\
+This completes the proof. 
+\end{proof}
+
+\begin{proof}[Another Proof using Set Inclusion Arguments]
+We first prove $A \cup B = A$ implies $B \subseteq A$, this follows immediately as
+\[B \subseteq A\cup B = A.\]
+Therefore $B \subseteq A$.\\
+\\
+Let us now prove the converse: $B \subseteq A$ implies $A \cup B = A$. As noted previously, we already have $A \subseteq A \cup B$. For the other inclusion, note that since $B \subseteq A$, we have
+\[A \cup B \subseteq A \cup A = A;\]
+and so $A \cup B \subseteq A$. Hence $A \cup B = A$.
+\end{proof}
+\end{itemize}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Set Operations}
+\end{center}
+\end{mdframed}
+
+\begin{proposition}[Set Operation Laws]
+Let $A,\,B,\,C$ be sets, then
+\begin{itemize}
+\item Distributive Laws
+\begin{align*}
+\text{\emph{(a)}}\quad A\, {\color{newblue}\cup}\, (B\, {\color{firebrick}\cap}\, C) &= (A\, {\color{newblue}\cup}\, B)\, {\color{firebrick}\cap}\, (A\, {\color{newblue}\cup}\, C)\\[0.5em]
+\text{\emph{(b)}}\quad A\, {\color{firebrick}\cap}\, (B\, {\color{newblue}\cup}\, C) &= (A\, {\color{firebrick}\cap}\, B)\, {\color{newblue}\cup}\, (A\, {\color{firebrick}\cap}\, C)
+\end{align*}
+
+\item De Morgan's Laws
+\begin{align*}
+\text{\emph{(a)}}\quad (A \cup B)^c &= A^c \cap B^c\\[0.5em]
+\text{\emph{(b)}}\quad (A \cap B)^c &= A^c \cup B^c
+\end{align*}
+\end{itemize}
+\end{proposition}
+\begin{proof}
+One can prove these laws either using Venn diagrams or element-wise arguments. We leave the proof to the reader.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+Show $(A \setminus B) \cap (A \setminus C) = A \setminus (B \cup C)$
+\begin{proof} \emph{Method 1.} Using Venn Diagrams (gets messier as we involve more sets).
+\item[] \emph{Method 2.} Using set operations
+\begin{align*}
+(A \setminus B) \cap (A \setminus C) &= (A \cap B^c) \cap (A \cap C^c) && \text{by Proposition \ref{prop:set-id} (1), or Example \ref{example:set-proof} (1)}\\[0.5em]
+ &= (A \cap A) \cap (B^c \cap C^c)\\[0.5em]
+ &= A \cap (B^c \cap C^c)\\[0.5em]
+ &= A \cap (B \cup C)^c && \text{by De Morgan's Laws}\\[0.5em]
+ &= A \setminus (B \cup C) && \text{by Proposition \ref{prop:set-id} (1), or Example \ref{example:set-proof} (1)}
+\end{align*}
+This completes the proof.
+\end{proof}
+\end{example}

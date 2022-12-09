@@ -1,0 +1,434 @@
+\vspace*{1em}
+
+\begin{definition}
+Let $R$ be a relation on $A$. We call $R$ an \cdef{equivalence\ relation} if
+\begin{multicols}{3}
+\begin{itemize}
+\item[$\bullet$] $R$ is reflexive
+\item[$\bullet$] $R$ is symmetric
+\item[$\bullet$] $R$ is transitive
+\end{itemize}
+\end{multicols}
+In this case, if $aRb$, then we say $a$ is equivalent to $b$ and we alternatively denote it as $a \sim b$ (by symmetry, $b \sim a$ as well).
+\end{definition}
+
+\vspace*{1em}
+
+An equivalence relation is a generalisation of equality.
+\begin{example}
+$R = \Delta_A = \setp{(a,a)}{a \in A}$ is an equivalence relation.
+\[aRb\ \text{ if and only if }\ a = b \quad \text{and} \quad R = ``=''\]
+Since,
+\begin{itemize}
+\item[(i)] $a = a$ for every $a \in A$.
+\item[(ii)] If $a = b$, then $b = a$, for every $a,b \in A$.
+\item[(iii)] If $a = b$ and $b = c$, then $a = c$, for every $a,b,c \in A$.
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}\label{example:eqrel1}
+For $A = \set{1,2,3,4,5}$, consider the following relation on $A$
+\[R = \set{(1,1),(2,2),(3,3),(4,4),(5,5),(1,3),(1,5),(5,1),(5,3),(3,1),(3,5),(2,4),(4,2)} \subseteq A \times A\]
+$R$ is an equivalence relation. Note,
+\begin{itemize}
+\item[(i)] for every $a \in A$, we have $(a,a) \in A$.
+\item[(ii)] Whenever $(a,b) \in R$, we have $(b,a) \in R$. (e.g. $(1,3) \in R$ and $(3,1) \in R$, $(3,6),(6,3) \in R$ etc.)
+\item[(iii)] We have $(1,6),(6,3) \in R$, is $(1,3) \in R$? Yes! Check remaining cases.
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}\label{example:eqrel2}
+Consider the following relation on $\rr^2\setminus\set{(0,0)}$
+\[(x,y)R(a,b) \quad \text{if and only if (i.e. the definition)} \quad \text{there exists $\lambda \in \rr_{\neq 0}$ such that $(a,b) = (\lambda x,\lambda y)$}\]
+We show $R$ is an equivalence relation.
+\begin{itemize}
+\item[(i)] Note that for $\lambda = 1$, we have
+\[(x,y) = (\lambda x,\lambda y)\]
+Therefore $(x,y)R(x,y)$, for all $(x,y) \in \rr^2$, and hence $R$ is reflexive.
+
+\item[(ii)] Suppose $(x,y),(a,b) \in \rr^2$ is such that $(x,y)R(a,b)$. Therefore $(a,b) = (\lambda x,\lambda y)$, for some $\lambda \in \rr_{\neq 0}$, and hence $a = \lambda x,\,b = \lambda y$. Thus,
+\[(x,y) = ((1/\lambda)a,(1/\lambda)b).\]
+Therefore $(a,b)R(x,y)$, and hence $R$ is symmetric.
+
+\item[(iii)] Suppose $(x,y),(a,b),(u,v) \in \rr^2$ is such that $(x,y)R(a,b)$ and $(a,b)R(u,v)$. Therefore $(a,b) = (\lambda x,\lambda y)$ and $(u,v) = (\mu a,\mu b)$, for some $\lambda,\mu \in \rr_{\neq 0}$. Hence \[a = \lambda x,\,b = \lambda y\; \text{ and }\; u = \mu a,\, v = \mu b.\] Thus,
+\[(u,v) = (\mu\lambda x,\mu\lambda y).\]
+Therefore $(x,y)R(u,v)$, and hence $R$ is transitive.
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}\label{example:eqrel3}
+For $A = \set{\text{all people}}$, consider the following relation on $A$
+\[P_1 \sim P_2 \quad \text{if and only if} \quad \text{age}(P_1) = \text{age}(P_2)\]
+This is an equivalence relation. Try and verify the definition!
+\end{example}
+
+\vspace*{1em}
+
+\begin{definition}
+Let $R$ be an equivalence relation on $A$.\\[0.5em]
+For $a \in A$, define the {\color{blue}$R$-}\cdef{equivalence\ class\ represented\ by} {\color{blue}$a$} to be the subset
+\begin{align*}
+[a] &= \setp{x \in A}{xRa \text{ (or $aRx$, by symmetry)}} = \set{\text{all elements of $A$ that are equivalent to $a$}} \subseteq A\\[0.5em]
+ &= \setp{x \in A}{\text{$(x,a) \in R$ ($(a,x) \in R$)}}
+\end{align*}
+Since $R$ is reflexive, that is, $aRa$, we have $a \in [a]$ for any $a \in A$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{example}
+Let us find the equivalence classes for \[R = \set{(1,1),(2,2),(3,3),(4,4),(5,5),(1,3),(1,5),(5,1),(5,3),(3,1),(3,5),(2,4),(4,2)}\] described in Example \ref{example:eqrel1} on $A = \set{1,2,3,4,5}$.
+\begin{align*}
+[1] &= \text{the equivalence class of $1$}\\[0.5em]
+ &= \text{all elements ``equivalent'' (that is, $R$-related) to $1$}\\[0.5em]
+ &= \setp{x \in A}{(x,1) \in R}\\[0.5em]
+ &= \set{1,3,5},\quad \text{since $(1,1),(3,1) \in R$}
+\end{align*}
+Similarly, 
+\begin{align*}
+[2] &= \setp{x \in A}{(x,2) \in R} & [4] &= \setp{x \in A}{(x,4) \in R}\\[0.5em]
+ &= \set{2,4} & &= \set{2,4} = [2]\\[1em]
+%
+[3] &= \setp{x \in A}{(x,3) \in R} & [5] &= \setp{x \in A}{(x,5) \in R}\\[0.5em]
+ &= \set{1,3,5} & &= \set{1,3,5} = [1] = [3]
+\end{align*}
+So, 
+\begin{align*}
+[1] &= [3] = [5] = \set{1,3,5}\\[0.5em]
+[2] &= [4] = \set{2,4}\\
+\end{align*}
+We make the following observations: for $a,b \in A$,
+\begin{align*}
+\text{if $a\cancel{R}b$},& \text{ then $[a] \cap [b] = \emptyset$; and}\\[0.5em]
+\text{if $aRb$},& \text{ then $[a] = [b]$}
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}
+Consider the equivalence relation as described in Example \ref{example:eqrel2}. Let's compute the equivalence class of $(3,5) \in \rr^2$
+\begin{align*}
+[(3,5)] &= \setp{(x,y) \in \rr^2}{(3,5) R (x,y)}\\[0.5em]
+ &= \setp{(x,y) \in \rr^2}{(x,y) = (3\lambda,5\lambda),\ \text{ for some $\lambda \in \rr_{\neq 0}$}}\\[0.5em]
+ &= \setp{(x,y) \in \rr^2}{x = 3\lambda\ \text{ and }\ y = 5\lambda,\ \text{ for some $\lambda \in \rr_{\neq 0}$}}\\[0.5em]
+ &= \setp{(3\lambda,5\lambda) \in \rr^2}{\lambda \in \rr_{\neq 0}}
+\end{align*}
+This is nothing but the line defined by the equation $3y = 5x$, minus the origin.
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}
+Consider the equivalence relation as described in Example \ref{example:eqrel3}. Let's compute the equivalence class of me!
+\begin{align*}
+[\text{Deewang}] &= \setp{P \in A}{P \sim \text{Deewang}}\\[0.5em]
+ &= \setp{P \in A}{\text{age}(P) = \text{age}(\text{Deewang}) = 28}\\[0.5em]
+ &= \set{\text{all people that are $28$ years of age}}
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}[Congruence is an Equivalence Relation]\label{example:congeq}
+Let $A = \zz$ and fix a positive integer $n$. Define a relation $R$ on $\zz$ as
+\[aRb \text{ if and only if } a\equiv b \modar{n}\]
+Recall that we say $a\equiv b\modar{n}$ if $n\mid (a - b)$. This is an equivalence relation.
+\begin{itemize}[itemsep=1em]
+\item[(i)] $a \equiv a \modar{n}$, for every $a \in \zz$.\\[0.5em]
+This is because $n\mid (a-a)$ for every integer $a$, as $a - a = 0 = n\cdot 0$.
+
+\item[(ii)] If $a \equiv b \modar{n}$, then $b \equiv a \modar{n}$, for every $a,b \in \zz$.\\[0.5em]
+This is because if $a \equiv b \modar{n}$, then $n\mid (a - b)$. That is, $a - b = nk$ for an integer $k$. Therefore $b - a = n(-k)$; since $-k \in \zz$, hence $n\mid (b-a)$. Thus $b \equiv a \modar{n}$.
+
+\item[(iii)] If $a \equiv b \modar{n}$ and $b \equiv c \modar{n}$, then $a \equiv c \modar{n}$, for every $a,b,c \in \zz$.\\[0.5em]
+This is because if $a \equiv b \modar{n}$ and $b \equiv c \modar{n}$, then $n\mid (a - b)$ and $n \mid (b-c)$. That is, $a - b = nk$ and $b - c = n\ell$ for integers $k,\ell$. Therefore $a - c = (a - b) + (b - c) = n(k + \ell)$; since $k + \ell \in \zz$, hence $n\mid (a-c)$. Thus $a \equiv c \modar{n}$.
+\end{itemize}
+Thus the congruence relation ``$\equiv$'' is an equivalence relation.\\
+\\
+Let $n = 5$, we find the equivalence class of $3$ with respect to the congruence modulo $5$ relation.
+\begin{align*}
+[3]_5 &= \setp{n \in \zz}{n \equiv 3 \modar{5}}\\[0.5em]
+ &= \setp{n \in \zz}{5\mid (n - 3)}\\[0.5em]
+ &= \setp{n \in \zz}{n - 3 = 5k\text{, for some integer $k$}}\\[0.5em]
+ &= \setp{n \in \zz}{n = 5k + 3\text{, for some integer $k$}}\\[0.5em]
+ &= \setp{5k + 3}{k \in \zz}\\[0.5em]
+ &= \set{\ldots,-7,-2,3,8,13,\ldots}\\[0.5em]
+ &= \set{\text{all integers that leave remainder $3$ when divided by $5$}}
+\end{align*}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}
+Let $A = \zz$, we define a relation $R$ on $\zz$ as
+\[aRb \text{ if and only if } a + 3b \text{ is even}\]
+We show this is an equivalence relation.
+\begin{itemize}
+\item[(i)] Is $aRa$, for every $a \in \zz$?\\[0.5em]
+Since for any $a \in \zz$, we have that $a + 3a = 4a$ is even. Thus $aRa$, and so $R$ is reflexive.
+
+\item[(ii)] Does $aRb$ imply $bRa$?\\[0.5em]
+Suppose $aRb$, that is, $a + 3b$ is even. We show $bRa$, or $b + 3a$ is even. Note that $(a + 3b) + (b + 3a) = 4a + 4b$ is even, therefore $b + 3a = 4(a+b) - (a + 3b)$ is even, as a sum of even integers. Hence $bRa$, and thus $R$ is symmetric.
+
+\item[(iii)] Do $aRb$ and $bRc$ imply $aRc$?\\[0.5em]
+Suppose $aRb$ and $bRc$, that is, $a + 3b$ and $b + 3c$ is even. We show $aRc$, or $a + 3c$ is even. Note that $(a + 3b) + (b + 3c) = a + 3c + 4b$, therefore $a + 3c = (a + 3b) + (b + 3c) - 4b$ is even, as a sum of even integers. Hence $aRc$, and thus $R$ is transitive.
+\end{itemize}
+Thus, $R$ is an equivalence relation.
+
+%\vspace*{1em}
+%
+%\begin{remark}
+%Note that
+%\begin{align*}
+%aRb &\text{ if and only if } a + 3b \equiv 0 \modar{2}\\[0.5em]
+% &\text{ if and only if } a \equiv -3b \modar{2}\\[0.5em]
+% &\text{ if and only if } a \equiv b \modar{2} \quad \text{since $-3b \equiv b\modar{2}$, as $2\mid (-3b-b)$}
+%\end{align*}
+%Thus $R$ was simply the congruence relation modulo $2$ and hence is an equivalence relation. Thus,
+%\begin{align*}
+%[0] &= \setp{x \in \zz}{xR0}\\[0.5em]
+% &= \setp{x \in \zz}{x \equiv 0 \modar{2}}\\[0.5em]
+% &= \set{\text{all even integers}}\\[1em]
+%%
+%[1] &= \setp{x \in \zz}{xR1}\\[0.5em]
+% &= \setp{x \in \zz}{x \equiv 1 \modar{2}}\\[0.5em]
+% &= \set{\text{all odd integers}}
+%\end{align*}
+%Thus, under $R$, there are two distinct equivalence classes
+%\[E = \set{\text{all even integers}},\ O = \set{\text{all odd integers}}\]
+%Note: $E \cap O = \emptyset$ and $E \cup O = \zz$
+%\end{remark}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Properties of Equivalence Classes}
+\end{center}
+\end{mdframed}
+
+\begin{theorem}\label{thm:eq=eqcl}
+Let $R$ be an equivalence relation on a set $A$. Then, for $a, b \in A$,
+\[ [a] = [b] \text{ if and only if } aRb\]
+\end{theorem}
+\begin{proof}
+Let $a,b \in A$.
+\begin{itemize}
+\item[$(\Rightarrow)$] Suppose $[a] = [b]$, we show $aRb$. Note that, since $R$ is reflexive, we have $aRa$. Therefore, $a \in [a] = [b]$, and hence $a \in [b]$. Thus, $aRb$.
+
+\item[$(\Leftarrow)$] Suppose $aRb$, we show $[a] = [b]$, that is, we show $[a] \subseteq [b]$ and $[b] \subseteq [a]$. Note that since $R$ is symmetric, we also have $bRa$.\\[0.5em]
+Consider any $x \in [a]$, by definition, $xRa$. Since $xRa$ and $aRb$, by assumption, we obtain $xRb$, by transitivity. Therefore, $x \in [b]$, and hence $[a] \subseteq [b]$.\\[0.5em]
+Consider any $y \in [b]$, by definition, $yRb$. Since $yRb$ and $bRa$, by assumption, we obtain $yRa$, by transitivity. Therefore, $y \in [a]$, and hence $[b] \subseteq [a]$.\\[0.5em]
+Thus, $[a] = [b]$.
+\end{itemize}
+\end{proof}
+
+\vspace*{1em}
+
+We have shown that $a$ and $b$ are equivalent, if and only if $[a] = [b]$. As a consequence, we obtain the following.
+\begin{theorem}
+Let $R$ be an equivalence relation on a set $A$. Then, for $a, b \in A$, if $[a] \cap [b] \neq \emptyset$, then $[a] = [b]$.
+\end{theorem}
+Thus, given any two equivalence classes $[a]$ and $[b]$, they are either disjoint or identical.
+\begin{proof}
+Let $a,b \in A$, and suppose $[a] \cap [b] = \emptyset$. We show $[a] = [b]$. Consider any $x \in [a] \cap [b]$. Then $x \in [a]$ and $x \in [b]$, and therefore $xRa$ and $xRb$. Since $R$ is symmetric and $xRa$, we obtain $aRx$. Hence we have $aRx$ and $xRb$, and thus $aRb$ by transitivity of $R$. Therefore $[a] = [b]$, by Theorem \ref{thm:eq=eqcl}.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+Recall that a \cdef{partition} of $A$ is a collection of subsets $X_\alpha \subseteq A$, where $\alpha \in I$ for some index set (that is, for each element $\alpha \in I$, we have a subset $X_\alpha$) such that
+\begin{align*}
+X_\alpha \cap X_\beta = \emptyset &\text{ if } \alpha \neq \beta\\[0.5em]
+\bigcup_{\alpha \in I}X_\alpha = A
+\end{align*}
+In this case, write $\displaystyle A = \coprod_{\alpha \in I}X_\alpha$ (``disjoint union'').
+\end{remark}
+
+\vspace*{1em}
+
+\begin{theorem}
+Let $R$ be an equivalence relation on a set $A$. Then, the collection of all $R$-equivalence classes defines a partition of $A$.\\[0.5em]
+\emph{This partition is denoted $A/R$ (read as: ``$A$ mod $R$''), and is called \emph{the quotient set of $A$ by $R$.}}
+\end{theorem}
+\begin{proof}
+The proof follows from the theorems above. We leave it to the reader to work out the details and write out a formal proof.
+\end{proof}
+
+\vspace*{1em}
+
+Conversely,
+\begin{theorem}
+Let $\mathscr{S} = \set{X_\alpha}_{\alpha \in I}$ be a partition of a set $A$. Then, there exists a unique relation $R$ on $A$ such that the resulting partition by equivalence classes is the partition given
+\end{theorem}
+This is saying that \emph{giving an equivalence relation on $A$ is equivalent to defining a partition of $A$}.
+\begin{proof}[Sketch of Proof]\renewcommand{\qed}{}
+We first prove the existence of such a relation $R$ on $A$. Define $R$ as follows: say,
+\[aRb \text{ if and only if } a,b \in X_\alpha \text{ for some $\alpha$}\]
+for any $a,b \in A$. One checks that this $R$ is equivalent, verifying that $R$ is reflexive and symmetric is straightforward. Following is the argument for showing transitivity of $R$.\\[0.5em]
+Suppose $aRb$ and $bRc$. By definition $a,b \in X_\alpha$ and $b,c \in X_\beta$. Therefore $b \in X_\alpha$ and $b \in X_\beta$, that is, $b \in X_\alpha \cap X_\beta$. Unless $X_\alpha = X_\beta$, we have shown that $X_\alpha \cap X_\beta \neq \emptyset$ contradicting the fact $\mathscr{S}$ is a partition. Hence, $X_\alpha = X_\beta$ and thus $a,c \in X_\alpha$. Therefore $aRc$.\\
+\\
+We still need to check following: (1) that $X_\alpha$ is an equivalence class for any $\alpha \in I$, we do this by exhibiting that for any $a \in X_\alpha$ we have $X_\alpha = [a]$; (2) This $R$ is the unique relation with this property.
+\end{proof}
+
+%\vspace*{1em}
+%
+%\begin{remark}
+%We note that
+%\[(a,b) \in R \text{ if and only if } aRb \text{ if and only if } a,b \in X_\alpha \text{ if and only if } (a,b) \in X_\alpha \times X_\alpha\]
+%for some $\alpha \in I$. Therefore, as a subset $R \subseteq A \times A$, we have
+%\[R = \coprod_{\alpha\in I} (X_\alpha \times X_\alpha)\]
+%\end{remark}
+%
+\vspace*{1em}
+
+\begin{example}
+Let $A = \set{1,2,3,4,5,6}$, and consider a partition
+\[\mathscr{S} = \set{\set{1,2},\set{3,4},\set{5,6}}\]
+What is the equivalence relation $R$ reproducing this partition?\\
+\\
+Let $X_\alpha = \set{1,2},X_\beta = \set{3,4}$ and $X_\gamma = \set{5,6}$.
+\begin{align*}
+\text{Since $1,2 \in \set{1,2}$, we have}& \text{ $1R2$ or $(1,2) \in R \subseteq A \times A$}\\[0.5em]
+\text{Since $3,4 \in \set{3,4}$, we have}& \text{ $3R4$ or $(3,4) \in R \subseteq A \times A$}\\[0.5em]
+\text{Since $5,6 \in \set{5,6}$, we have}& \text{ $5R6$ or $(5,6) \in R \subseteq A \times A$}
+\end{align*}
+%What is the totality of $R$ as a subset of $A \times A$?
+%\begin{align*}
+%R &= (X_\alpha \times X_\alpha) \cup (X_\beta \times X_\beta) \cup (X_\gamma \times X_\gamma)\\[0.5em]
+% &= \set{(1,2),(2,1),(1,1),(2,2)} \cup \set{(3,4),(4,3),(3,3),(4,4)} \cup \set{(5,6),(6,5),(5,5),(6,6)}\\[0.5em]
+% &= \set{(1,1),(2,2),(3,3),(4,4),(1,2),(2,1),(3,4),(4,3),(5,6),(6,5)}
+%\end{align*}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Congruence modulo $n$}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Fix a positive integer $n \geq 2$. Recall that we say $a \equiv b \modar{n}$ if 
+\[n\mid (a-b) \text{ if and only if $a$ and $b$ have the same remainder when divided by $n$}\]
+We have seen in Example \ref{example:congeq} that \emph{congruence modulo $n$} is an equivalence relation. What are the equivalence classes?
+\begin{align*}
+[0] &= \setp{x \in \zz}{x \equiv 0 \modar{n}} = \setp{nk}{k \in \zz}\\[0.5em]
+[1] &= \setp{x \in \zz}{x \equiv 1 \modar{n}} = \setp{nk + 1}{k \in \zz}\\[0.5em]
+	&= \qquad \vdots\\[0.5em]
+[n-1] &= \setp{x \in \zz}{x \equiv n-1 \modar{n}} = \setp{nk + (n-1)}{k \in \zz}
+\end{align*}
+Since $n \in [0]$, therefore $[n] = [0]$.\\[0.5em]
+Similarly, since $n + 1 \in [1]$, therefore $[n+1] = [1]$; so on and so forth.\\
+Note that the above list is of the form $[r]$ for $0 \leq r \leq n$, all possible remainders when a number is divided by $r$. In particular, for any integer $x \in \zz$, when divided by $n$, we have a quotient $q$ and remainder $r$ such that $x = nq + r$, and thus $x \in [r]$. Hence, $[0],[1],\ldots,[n-1]$ is the complete list of equivalence classes under the congruence relation modulo $n$.\\
+\\
+We denote the collection of distinct equivalence classes under congruence modulo $n$ as
+\[\zz/n\zz = \underbrace{\set{[0],[1],\ldots,[n-1]}}_{\text{$n$-many elements}},\]
+the set of \emph{integers modulo $n$}, read as ``$\zz$ mod $n\zz$''.\\
+\\
+Surprisingly, $\zz/n\zz$ has properties similar to that of $\zz$. We can define addition, subtraction and multiplication for elements in $\zz/n\zz$.
+\begin{itemize}[leftmargin=*]
+\item[]Addition. Given two elements $[a],[b] \in \zz/n\zz$, define
+\[ [a] + [b] \defeq [a+b]\]
+Here $[0]$ acts as a ``zero'' element under addition. That is,
+\[ [a] + [0] = [a] = [0] + [a]\]
+
+\item[]Multiplication. Given two elements $[a],[b] \in \zz/n\zz$, define
+\[ [a] \cdot [b] \defeq [ab]\]
+Here $[0]$ acts as a ``unit'' element under multiplication. That is,
+\[ [a] \cdot [1] = [a] = [1] \cdot [a]\]
+Also note that $[a] \cdot [0] = [0] = [0] \cdot [a]$.
+\end{itemize}
+\end{discussion}
+
+%\vspace*{1em}
+
+\begin{example}
+For $n = 5$, consider $\zz/5\zz = \set{[0],[1],[2],[3],[4]}$.\\[1em]
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{c|ccccc}
+$+$ & $[0]$ & $[1]$ & $[2]$ & $[3]$ & $[4]$\\
+\hline
+$[0]$ & $[0]$ & $[1]$ & $[2]$ & $[3]$ & $[4]$\\
+$[1]$ & $[1]$ & $[2]$ & $[3]$ & $[4]$ & $[0]$\\
+$[2]$ & $[2]$ & $[3]$ & $[4]$ & $[0]$ & $[1]$\\
+$[3]$ & $[3]$ & $[4]$ & $[0]$ & $[1]$ & $[2]$\\
+$[4]$ & $[4]$ & $[0]$ & $[1]$ & $[2]$ & $[3]$\\
+\end{tabular}
+}
+\end{center}
+\[\text{addition table}\]
+\end{minipage}\quad
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{c|ccccc}
+$\times$ & $[0]$ & $[1]$ & $[2]$ & $[3]$ & $[4]$\\
+\hline
+$[0]$ & $[0]$ & $[0]$ & $[0]$ & $[0]$ & $[0]$\\
+$[1]$ & $[0]$ & $[1]$ & $[2]$ & $[3]$ & $[4]$\\
+$[2]$ & $[0]$ & $[2]$ & $[4]$ & $[1]$ & $[3]$\\
+$[3]$ & $[0]$ & $[3]$ & $[1]$ & $[4]$ & $[2]$\\
+$[4]$ & $[0]$ & $[4]$ & $[3]$ & $[2]$ & $[1]$\\
+\end{tabular}
+}
+\end{center}
+\[\text{multiplication table}\]
+\end{minipage}
+\begin{proof}[Observation]\renewcommand{\qed}{}
+In the multiplication table, we have
+\[ [2]\cdot [3] = [1] = [3]\cdot [2] \quad \text{and} \quad [4]\cdot[4] = [1];\]
+note that $[1]$ is ``unit'' element under multiplication.\newpage
+In this way, we say
+\begin{align*}
+\text{$[2]$ is the ``inverse''}& \text{ of $[3]$}\\[0.5em]
+\text{$[3]$ is the ``inverse''}& \text{ of $[2]$}\\[0.5em]
+\text{$[4]$ is the ``inverse''}& \text{ of $[4]$}
+\end{align*}
+In this way, ``division'' in $\zz/5\zz$ is possible. ``Dividing'' by $[2]$ means multiplying by $[3]$, for example. 
+\end{proof}
+\end{example}
+
+\vspace*{1em}
+
+Division is not always possible for all $\zz/n\zz$.
+\begin{example}
+For $n = 4$, consider $\zz/4\zz = \set{[0],[1],[2],[3]}$.\\[1em]
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{c|cccc}
+$\times$ & $[0]$ & $[1]$ & $[2]$ & $[3]$\\
+\hline
+$[0]$ & $[0]$ & $[0]$ & $[0]$ & $[0]$\\
+$[1]$ & $[0]$ & $[1]$ & $[2]$ & $[3]$\\
+$[2]$ & $[0]$ & $[2]$ & $[0]$ & $[2]$\\
+$[3]$ & $[0]$ & $[3]$ & $[2]$ & $[1]$
+\end{tabular}
+}
+\end{center}
+\[\text{multiplication table}\]
+For no $[a] \in \zz/4\zz$ do we get $[2]\cdot [a] = [1]$. So, ``dividing'' by $[2]$ has no meaning in $\zz/4\zz$. Thus, division is not possible in $\zz/4\zz$.
+\end{example}
+
+\vspace*{1em}
+
+\begin{discussion}[Fact]
+For a prime number $p,\ \zz/p\zz$ admits division.
+\item[] If $n$ is not prime, you cannot do division in $\zz/n\zz$. If $n = ab,\ 1 < a,b < n$, then 
+\[ [a] \cdot [b] = [n] = [0]\]
+So, $[a],[b]$ are ``zero divisors''.\\
+\\
+In $\zz/p\zz$, where $p$ is a prime number, we can do all arithmetic operations: addition, subtraction, multiplication and division; this is an example of a \emph{field}.
+\[\underbrace{\underbrace{\underbrace{\text{addition},\ \text{subtraction}}_{\text{group}},\ \text{multiplication}}_{\text{ring}},\ \text{division}}_{\text{field}}\]
+\end{discussion}

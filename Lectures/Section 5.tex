@@ -1,0 +1,394 @@
+\begin{mdframed}
+\begin{center}
+{\Large Counterexamples}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Our purpose is always to determine the truth value of statements. Consider a universally quantified statement 
+\[\forall x\in S,\ R(x)\]
+Is this true or false?
+\item[] If you think it is true, \emph{prove it}.
+\item[] If you think it is false, then its negation
+\[\exists x \in S,\ \neg R(x)\]
+is true. Therefore to show falsehood, we need to exhibit an (at least one) element $x_0 \in S$ such that $R(x_0)$ is false (that is, $\neg R(x_0)$ is true). $x_0$ is the called a \emph{counterexample} to the given statement. Counterexamples prove falsehood of, disproving, universally quantified statements.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+The reader has shown in an assignment that if $n$ is a sum of two squares, then
+\[n \equiv 0,1,2 \modar{4}\]
+Consider the converse: For an integer $n$, if $n \equiv 0,1,2 \modar{4}$, then $n$ a sum of two squares.
+\end{example}
+\begin{proof}[Question]
+\renewcommand{\qed}{}
+True or False? Probably false, so we seek a counterexample. We check the statement for small non-negative integers, in hopes of encountering a counterexample.\\[0.5em]
+Since $n \equiv 0,1,2 \modar{4}$, our list is
+\begin{center}
+{\renewcommand{\arraystretch}{2}%
+\begin{tabular}{c|cccccccccc}
+$n$ & $0$ & $1$ & $2$ & $4$ & $5$ & $6$ & $8$ & $9$ & $10$ & $\cdots$\\
+\hline
+\makecell{sum of\\ squares} & $0^2 + 0^2$ & $0^2 + 1^2$ & $1^2 + 1^2$ & $0^2 + 2^2$ & $1^2 + 2^2$ & {\color{firebrick}No.} & \phantom{$1^2 +$} & \phantom{$1^2 +$} & \phantom{$1^2 +$} & 
+\end{tabular}
+}
+\end{center}
+\end{proof}
+\begin{proof}[Answer]
+False. Since $6 \equiv 2 \modar{4}$, but it is not a sum of two squares. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+True or False?
+\item[] Let $a,b \in \rr$ such that $a,b \neq 0$. For all $x,y \in \rr_{>0}$, is
+\[\frac{a^2}{2b^2}\,x^2 + \frac{b^2}{2a^2}\,y^2 > xy\]
+\end{example}
+\begin{proof}[Scratch Notes]
+\renewcommand{\qed}{}
+We will try and prove it. If the proof goes through, the statement true and we have a proof. If the proof does not go through, then the reason why it did not could possibly give us a way to produce a counterexample.\newpage
+\begin{align*}
+\mathrm{L.H.S.} - \mathrm{R.H.S.} &= \frac{a^2}{2b^2}\,x^2 + \frac{b^2}{2a^2}\,y^2 - xy\\[0.5em]
+ &= \frac{1}{2}\left(\frac{a^2}{b^2}\,x^2 - 2xy + \frac{b^2}{a^2}\,y^2\right)\\[0.5em]
+ &= \frac{1}{2}\left(\left(\frac{ax}{b}\right)^2 - 2\left(\frac{ax}{b}\right)\left(\frac{by}{a}\right) + \left(\frac{by}{a}\right)^2\right)\\[0.5em]
+ &= \frac{1}{2}\left(\frac{ax}{b} - \frac{by}{a}\right)^2 \geq 0
+\end{align*}
+So, when do we get the above expression $=0$? Exactly when
+\[\frac{ax}{b} = \frac{by}{a}\]
+Do such $x$ and $y$ exist? Well yes, consider $x = b^2$ and $y = a^2$, then
+\[\frac{ax}{b} = ab = ba = \frac{by}{a}\]
+\end{proof}
+\begin{proof}[Answer]
+False. Let $x = b^2$ and $y = a^2$. Then
+\begin{align*}
+\mathrm{L.H.S.} &= \frac{a^2}{2b^2}\,x^2 + \frac{b^2}{2a^2}\,y^2\\[0.5em]
+ &= \frac{a^2}{2b^2}\cdot (b^2)^2 + \frac{b^2}{2a^2}\cdot (a^2)^2\\[0.5em]
+ &= \frac{a^2b^2}{2} + \frac{b^2a^2}{2}\\[0.5em]
+ &= a^2b^2\\[1em]
+\mathrm{R.H.S.} &= xy\\[0.5em]
+ &= a^2b^2
+\end{align*}
+So, $\mathrm{L.H.S.} = \mathrm{R.H.S.}$, and therefore $\mathrm{L.H.S.} > \mathrm{R.H.S.}$ does not hold.
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Proof by Contradiction}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Let $R$ be a statement. What is a \cdef{proof\ by\ contradiction}? The method is as follows: to show $R$ is true, show that the negation of $R$ leads to a contradiction $\bot$. Logical structure,
+\[R \equiv (\neg R \implies \bot)\]
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering}m{1cm}|>{\centering\arraybackslash}m{1.5cm}|}
+\hline
+\rowcolor{lightgrey}
+$R$ & $\neg R$ & $\bot$ & $\neg R \implies \bot$ \\
+\hline
+$\true$ & $\false$ & $\false$ & $\true$\\
+\hline
+$\false$ & $\true$ & $\false$ & $\false$\\
+\hline
+\end{tabular}
+}
+\end{center}
+If the negation of $R$ gives us a contradiction, that is, if $(\neg R \implies \bot)$ is true, since the conclusion $\bot$ is always false, the only possibility is for the hypothesis $\neg R$ to be also false. Hence $R$ is true.\\
+\\
+{\bf Special but useful case.} If $R$ is of the form $P \implies Q$, then to prove $P \implies Q$ we prove the following
+\[\neg(P \implies Q) \implies \bot\]
+Recall that \[\neg(P \implies Q) \equiv \neg(\neg P \vee Q) \equiv P \wedge \neg Q.\] Thus, to prove $P \implies Q$, show that
+\[(P \wedge \neg Q) \implies \bot\]
+The contradiction we often try to find is $S \wedge \neg S$ for some statement $S$. In other words, assume $P$ is true and also assume the conclusion $Q$ is false, then we try to find a contradiction $S \wedge \neg S$, finding an appropriate $S$ is the heart of the proof.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Suppose an integer $m$ is such that $2\mid m$ but $4\nmid m$. Show that there are no integer solutions $x,y$ to the equation
+\[x^2 + 2y^2 = m\]
+This is a \emph{non-existence statement}, we use proof by contradiction to prove such statements.
+\end{example}
+\begin{proof}[Scratch Notes for Proof]\renewcommand{\qed}{}
+Suppose we have an integer $m$ is such that $2\mid m$ but $4\nmid m$, therefore $m \equiv 2\modar{4}$. The logical structure of the statement is
+\begin{align*}
+\text{Hypothesis } & P(m): m \equiv 2 \modar{4}\\[0.5em]
+\text{Conclusion } & Q(m): x^2 + 3y^2 = m \text{ has no integer solution }x,y
+\end{align*}
+We need to show \[\forall m \in \zz,\ P(m) \implies Q(m)\]
+To give a proof by contradiction, we assume two things: $P(m)$ and $\neg Q(m)$. That is, suppose $m \equiv 2\modar{4}$ and that there exist integers $x,y$ such that $x^2 + 3y^2 = m$.\\
+\\
+How do we find a contradiction? Consider integers modulo $4$, we have seen that for any integer $n$, we have $n^2 \equiv 0,1\modar{4}$. So, for the solutions $x,y$, we have $x^2 \equiv 0,1\modar{3}$ and $y^2 \equiv 0,1\modar{3}$. So, we have the cases
+\begin{align*}
+x^2 \equiv 0 \modar{4},&\; y^2 \equiv 0 \modar{4} & \text{So, } x^2 + 3y^2 &\equiv 0 \modar{4}\\[0.5em]
+x^2 \equiv 1 \modar{4},&\; y^2 \equiv 0 \modar{4} & \text{So, } x^2 + 3y^2 &\equiv 1 \modar{4}\\[0.5em]
+x^2 \equiv 0 \modar{4},&\; y^2 \equiv 1 \modar{4} & \text{So, } x^2 + 3y^2 &\equiv 3 \modar{4}\\[0.5em]
+x^2 \equiv 1 \modar{4},&\; y^2 \equiv 1 \modar{4} & \text{So, } x^2 + 3y^2 &\equiv 4 \equiv 0 \modar{4}
+\end{align*}
+Thus, $x^2 + 3y^2 \equiv 0,1,3 \modar{4}$ and therefore $x^2 + 3y^2 \not\equiv 2 \modar{3}$. But our assumption is $x^2 + 3y^2 = m \equiv 2 \modar{4}$, this our $S$. Hence, we have arrived at a contradiction. So, $x^2 + 3y^2 = m$ cannot have integer solutions. 
+\end{proof}
+\begin{proof}
+Check back tomorrow for a proof.
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{discussion}
+We now have three methods to prove implications $P \implies Q$
+\begin{center}
+\begin{tabular}{>{\centering}m{1.75cm} >{\centering}m{0.5cm} >{\centering}m{2cm} >{\centering}m{0.5cm} >{\centering\arraybackslash}m{2.75cm}}
+$P \implies Q$ & $\equiv$ & $\neg Q \implies \neg P$ & $\equiv$ & $(P \wedge \neg Q) \implies \bot$\\
+{\scriptsize(I) Direct Proof} && {\scriptsize(II) Proof by Contrapositive} && {\scriptsize(III) Proof by Contradiction}\\
+\end{tabular}
+\end{center}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Let $x \in \rr$ and $x \neq 0$. Show that if $x + \dfrac{1}{x} < 2$, then $x > 0$.
+\end{example}
+\begin{proof}[Direct Proof]
+Suppose $x$ is a non-zero real number such that $x + 1/x < 2$, we show $x < 0$. We first observe that we have
+\[x + \frac{1}{x} - 2 < 0\]
+Note that
+\begin{align*}
+x + \frac{1}{x} - 2 &= \frac{x^2 + 1 - 2x}{x}\\[0.5em]
+&= \frac{(x-1)^2}{x}
+\end{align*}
+Since $(x - 1)^2 \geq 0$ for any $x$, for the ration to be negative, we necessarily must have $x< 0$. This completes the proof.
+\end{proof}
+\vspace*{0.2em}
+\begin{proof}[Proof by Contrapositive]
+We prove its contrapositive. Assume $x \geq 0$, since $x\neq 0$, we may assume $x > 0$. We wish to prove $x + 1/x \geq 2$. Using AM $\geq$ GM, we have
+\[\frac{1}{2}\left(x + \frac{1}{x}\right) \geq \sqrt{x\cdot \frac{1}{x}} = 1\]
+Hence $x + \dfrac{1}{x} \geq 2$. This completes the proof.
+\end{proof}
+\vspace*{0.2em}
+\begin{proof}[Proof by Contrapositive]
+For the sake of contradiction, assume that $x \geq 0$ is a real number such that $x + 1/x < 2$ and $x > 0$. Using AM $\geq$ GM, we have
+\[\frac{1}{2}\left(x + \frac{1}{x}\right) \geq \sqrt{x\cdot \frac{1}{x}} = 1\]
+Hence $x + \dfrac{1}{x} \geq 2$. This contradicts our hypothesis, hence $x + 1/x < 2$ implies $x < 0$.
+\end{proof}
+
+%\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Existence Proofs}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+We now turn our attention to proving 
+\[\exists x \in S,\ R(x)\]
+\emph{there exists an $x$ such that $R(x)$ is true.} Methods to prove existence results
+\begin{itemize}
+\item[(1)] Exhibit $x \in S$ satisfying $R(x)$.
+\item[(2)] Use other existence theorems.
+\item[(3)] Use proof by contradiction. \emph{the method of choice for proving existence results}.
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}[itemsep=1em,leftmargin=4em]
+\item[for (1)] Rationality of $a^b$, where $a,b \in \rr$ and $a,b > 0$.
+\begin{proof}[Question]\renewcommand{\qed}{}
+Is $a^b$ is rational or irrational?
+\end{proof}
+\begin{proof}
+We divide this into cases: where $a$ and $b$ are rational or irrational.
+\begin{itemize}[leftmargin=4em]
+\item[Case I.] $a$ is rational, $b$ is rational
+\begin{align*}
+2^3 &= 8 \text{ (rational)}\\
+2^{1/2} &= \sqrt{2} \text{ (irrational)}
+\end{align*}
+
+\item[Case II.] $a$ is rational, $b$ is irrational
+\begin{align*}
+1^{\sqrt{2}} &= 1 \text{ (rational)}\\
+2^{\log_23} &= 3 \text{ (rational)}\\
+2^{\log_2 \sqrt{3}} &= \sqrt{3} \text{ (irrational)}
+\end{align*}
+
+\item[Case III.] $a$ is irrational, $b$ is rational
+\begin{align*}
+(\sqrt{2})^2 &= 2 \text{ (rational)}\\
+(\sqrt{2})^3 &= 2\sqrt{2} \text{ (irrational)}
+\end{align*}
+
+\item[Case IV.] $a$ is irrational, $b$ is irrational
+\begin{align*}
+(\sqrt{2})^{2\log_2 3} = 2^{\log_2 3} &= 3 \text{ (rational)}\\
+(\sqrt{2})^{\log_2 3} = (2^{\log_2 3})^{1/2} &= \sqrt{3} \text{ (irrational)}
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\item[for (2)] Show that $x^2 + 2x - 5 = 0$ has a solution in the interval $[1,2]$.
+\begin{proof}
+We use the following existence result to prove this.
+\begin{theorem}[Intermediate Value Theorem]
+Suppose $f:[a,b] \to \rr$ is continuous. If $f(a) < 0$ and $f(b) > 0$, then there exists a $c \in (a,b)$ such that $f(c) = 0$.
+\end{theorem}
+Back to our proof. As a polynomial $f(x) = x^2 + 2x - 5$ is continuous. Since $f(1) = -2 < 0$ and $f(2) = 3 > 0$, therefore there exists a $c \in (1,2)$ such that $f(c) = 0$. That is, $c^2 + 2c - 5 = 0$. This completes our proof.
+\end{proof}
+
+\item[for (3)] We look at a very fundamental counting principle.
+\begin{theorem}[Pigeonhole Principle]
+Suppose $n$ objects are placed in $m$ boxes. If $n > m$, then there exists a box containing at least two objects. 
+\end{theorem}\vspace*{-1em}
+\begin{proof}
+For the sake of contradiction, suppose $n > m$ and every box contains at most one object. Since there are $m$ boxes, it follows that there are at most $m$ objects; that is $n \leq m$. This contradicts our hypothesis that $n > m$. This completes our proof.
+\end{proof}
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}[on the Pigeonhole Principle]
+Let $S$ be a set of three integers. For a non-empty subset $A$ of $S$, let $\sigma_A$ be the sum of elements in $A$. Prove that there exist two distinct nonempty subsets $B$ and $C$ of $S$ such that $\sigma_B \equiv \sigma_C \modar{6}$.
+\end{example}
+
+\begin{proof}[Experiments]\renewcommand{\qed}{}
+Let $S = \set{2,5,7}$
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%>{\columncolor[gray]{0.8}}
+\begin{tabular}{c|>{\columncolor{newblue!20}}c|c|>{\columncolor{firebrick!20}}c|>{\columncolor{firebrick!20}}c|c|c|>{\columncolor{newblue!20}}c|}
+%\begin{tabular}{c|>{\columncolor[red]{0.8}}cc>{\columncolor[blue]{0.8}}c>{\columncolor[blue]{0.8}}ccc>{\columncolor[red]{0.8}}c}
+$A$ & $\set{2}$ & $\set{5}$ & $\set{7}$ & $\set{2,5}$ & $\set{5,7}$ & $\set{7,2}$ & $\set{2,5,7}$\\
+\hline
+$\sigma_A$ & $2$ & $5$ & $7$ & $7$ & $11$ & $9$ & $14$
+\end{tabular}
+}
+\end{center}
+Subsets $B = \set{2},\ \sigma_B = 2$ and $C = \set{2,5,7},\ \sigma_C = 14$ are such that $\sigma_{B} \equiv \sigma_{C} \modar{6}$. Also, subsets $B' = \set{7},\ \sigma_{B'} = 7$ and $C' = \set{2,5},\ \sigma_{C'} = 7$ are such that $\sigma_{B'} \equiv \sigma_{C'} \modar{6}$.\\
+\\
+Let $S = \set{1,3,8}$
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{c|c|>{\columncolor{forest!20}}c|c|c|c|>{\columncolor{forest!20}}c|c}
+$A$ & $\set{1}$ & $\set{3}$ & $\set{8}$ & $\set{1,3}$ & $\set{3,8}$ & $\set{8,1}$ & $\set{1,3,8}$\\
+\hline
+$\sigma_A$ & $1$ & $3$ & $8$ & $4$ & $11$ & $9$ & $12$
+\end{tabular}
+}
+\end{center}
+Subsets $B = \set{3},\ \sigma_B = 3$ and $C = \set{1,8},\ \sigma_C = 9$ are such that $\sigma_{B} \equiv \sigma_{C} \modar{6}$.
+\end{proof}
+
+\begin{proof}
+Let $S$ be a three element set. The number of non-empty subsets of $S$ are $\abs{\cat{P}(S)} - 1 = 2^3 - 1 = 7$. So, we obtain $n = 7$ integers $\sigma_A$ for every non-empty subset $A$ of $S$. These are our objects. While there are $m = 6$ possibly remainders when an integer is divided by $6$. These are our boxes.
+
+\begin{center}
+\begin{tabular}{cccccccccccccc}
+$\sigma_A$ & $\bullet$ && $\bullet$ && $\bullet$ && $\bullet$ && $\bullet$ && $\bullet$ && $\bullet$\\[1em]
+remainders && $\underset{0}{\fbox{\phantom{11}}}$ && $\underset{1}{\fbox{\phantom{11}}}$ && $\underset{2}{\fbox{\phantom{11}}}$ && $\underset{3}{\fbox{\phantom{11}}}$ && $\underset{4}{\fbox{\phantom{11}}}$ && $\underset{5}{\fbox{\phantom{11}}}$
+\end{tabular}
+\end{center}
+
+Therefore, by the Pigeonhole Principle, there must be one box with at least two objects; that is, there must exist two sets $B$ and $C$ such that $\sigma_B$ and $\sigma_C$ leave the same remainder when divided by $6$ (are in the same box). This completes the proof. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{discussion}
+Previously we discussed existence proofs, that is, proving a statement of the form
+\[\exists x \in S,\ R(x)\]
+We wish to now discuss a proof of a variation about the above statement. Recall that the above statement says \emph{there exists an $x \in S$ such that $R(x)$ is true}. We focus on a statement when such an $x$ is unique, that is, not only is $R(x)$ true for this $x$, $x$ is the only element for which $R(x)$ is true. The statement is then \emph{there exists a unique $x \in S$ such that $R(x)$ is true}, and is denoted symbolically as
+\[\exists ! x \in S,\ R(x)\]
+So, there are two steps to proving such a statement
+\begin{itemize}
+\item[] Step 1. Existence proof. Prove such an $x$ exists.
+\item[] Step 2. Uniqueness proof. Prove such an $x$ is unique.
+\end{itemize}
+We have already discussed Step 1. For Step 2., one typically does the following
+\begin{itemize}
+\item[(1)] If $x,y \in S$ are such that $R(x)$ and $R(y)$ is true, prove that $y = x$.
+\item[(2)] If $x,y \in S$ are such that $R(x)$ and $R(y)$ is true and $y \neq x$, then show that this leads to a contradiction.
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}\label{example:lec13-ex1}
+Show that $x^5 + 2x - 5 = 0$ has a unique root between $x = 1$ and $x = 2$.
+\end{example}
+\begin{proof}
+We are being asked to prove both an existence statement and a uniqueness statement.
+\item[] (Existence)
+Let $f(x) = x^5 + 2x - 5$. Since $f(1) = -2 < 0$ and $f(2) = 31 > 0$, by the Intermediate Value Theorem, there exists a real number $c \in (1,2)$ such that $f(c) = 0$.\\
+\item[] (Uniqueness, Method 1)
+Suppose there exist $c_1,c_2 \in (1,2)$ such that $f(c_1) = f(c_2) = 0$. We aim to show $c_1 = c_2$. By assumption,
+\[c_1^5 + 2c_1 - 5 = f(c_1) = 0 \quad \text{and} \quad c_2^5 + 2c_2 - 5 = f(c_2) = 0\]
+Taking their difference of these two equations, we obtain
+\[(c_1^5 - c_2^5) + 2(c_1 - c_2) = 0\tag{$*$}\]
+\begin{subproof}
+To show $c_1 = c_2$, we want to factor out $c_1 - c_2$ from the L.H.S. in ($*$). We use the following identity: for any real numbers $x,y$
+\[x^n - y^n = (x-y)(x^{n-1} + x^{n-2}y + \cdots + xy^{n-2} + y^{n-1})\]
+\end{subproof}
+\vspace*{0.5em}
+Factoring out $c_1 - c_2$ from the L.H.S. in ($*$), we get
+\[(c_1 - c_2)(c_1^4 + c_1^3c_2 + c_1^2c_2^2 + c_1c_2^3 + c_2^4 + 2) = 0\]
+\begin{subproof}
+To show $c_1 = c_2$, we want to argue that the other factor $c_1^4 + c_1^3c_2 + c_1^2c_2^2 + c_1c_2^3 + c_2^4 + 2$ is non-zero.
+\end{subproof}
+\vspace*{0.5em}
+Since $1<c_1,c_2 < 2$, we have $c_1^4,\,c_1^3c_2,\,c_1^2c_2^2,\,c_1c_2^3,\,c_2^4 > 1$. Thus, we get 
+\[c_1^4 + c_1^3c_2 + c_1^2c_2^2 + c_1c_2^3 + c_2^4 + 2 > 7\]
+In particular, this factor is non-zero. Hence, necessarily $c_1 - c_2 = 0$. This completes the uniqueness proof.\\
+\item[] (Uniqueness, Method 2) Suppose there exist $c_1,c_2 \in (1,2)$ such that $f(c_1) = f(c_2) = 0$ and $c_1 \neq c_2$. We will provide a contradiction. Since $f(x) = x^5 + 2x - 5$, we have 
+\[f'(x) = 5x^4 + 2 > 0.\]
+Therefore $f(x)$ is a strictly increasing function. We may assume, without loss of generality, that $c_1 < c_2$. Then, since $f$ is increasing, we have $f(c_1) < f(c_2)$. This contradicts our assumption that $f(c_1) = f(c_2) = 0$. Hence, necessarily $c_1 = c_2$. This completes the uniqueness proof.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+Generally speaking, proof by contradiction is the method of choice for existence and uniqueness proofs. But if you can give a direct proof, by all means do so.
+\end{remark}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Disproving Existence Statements}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+To disprove
+\[\exists x \in S,\ R(x)\]
+Prove that its negation is true
+\[\neg(\exists x \in S,\ R(x)) \equiv \forall x \in S,\ \neg R(x)\]
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Disprove that there exist integers $a \geq 2$ and $n \geq 1$ such that
+\[a^2 + 1 = 2^n\]
+\end{example}
+\begin{proof}
+We prove that for all integers $a \geq 2$ and $n \geq 1$, we have $a^2 + 1 \neq 2^n$, by using proof by contradiction. Suppose there exist $a \geq 2$ and $n \geq 1$ such that $a^2 + 1 = 2^n$.\\[0.5em]
+Since $n \geq 1$, $2^n$ is even. Therefore $a^2$ is odd, and hence so is $a$. We may then write $a = 2k + 1$ for an integer $k$. Since $a \geq 2$, we get that $k \geq 1$. Therefore,
+\begin{align*}
+a^2 + 1 &= (2k + 1)^2 + 1\\[0.5em]
+&= (4k^2 + 4k + 1) + 1\\[0.5em]
+&= 4k^2 + 4k + 2\\[0.5em]
+&= 2(2k^2 + 2k + 1)
+\end{align*}
+Since $a^2 + 1 = 2^n$, by assumption, we have $2(2k^2 + 2k + 1) = 2^n$. Hence,
+\[2^{n-1} = 2k^2 + 2k + 1 = 2k(k+1) + 1\]
+Which gives us
+\[2k(k + 1) = 2^{n-1} - 1\]
+Since $k \geq 1$, the L.H.S. $\geq 4$. Thus $2^{n-1} - 1 \geq 4$, and hence necessarily $n > 1$. Therefore the R.H.S., $2^{n - 1} - 1$ is odd, but the L.H.S. is always even. We have thus arrived at a contradiction. This completes the proof.
+\end{proof}

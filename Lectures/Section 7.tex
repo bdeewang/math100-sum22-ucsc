@@ -1,0 +1,252 @@
+\begin{mdframed}
+\begin{center}
+{\Large Conjectures in Mathematics}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+In mathematics, we sometimes encounter statements for which we have ample evidence (several examples) that they may be true. We call these statements conjectures. In many ways, a conjecture is nothing more than an intelligent guess.\\
+\\
+When one encounters a pattern, one first tries to synthesise the pattern into a conjecture. The next step is then to attempt a proof.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Consider the following pattern
+\begin{align*}
+1 &= 0 + 1 = 0^3 + 1^3\\[0.5em]
+2 + 3 + 4 &= 1 + 8 = 1^3 + 2^3\\[0.5em]
+5 + 6 + 7 + 8 + 9 &= 8 + 27 = 2^3 + 3^3\\[0.5em]
+10 + 11 + 12 + 13 + 14 + 15 + 16 &= 27 + 64 = 3^3 + 4^3\\
+ & \vdots
+\end{align*}
+We formulate the following conjecture.
+\begin{conjecture}
+For every integer $n \geq 0$, we have
+\[(n^2 + 1) + (n^2 + 2) + \cdots + (n+1)^2 = n^3 + (n+1)^3\]
+\end{conjecture}
+Is this true or false? If one thinks it is true, one needs to provide a proof. If one think it is false, one needs to exhibit a counterexample.\\
+\\
+This is true.
+\begin{proof}
+There are two methods of proof that we can do here. 
+\item[] A proof using the Principle of Mathematical Induction. (Try this!)
+\item[] A direct proof using the formula for sum of positive integers
+\[1 + 2 + \cdots + k = \frac{k(k+1)}{2},\quad k \geq 1\]
+We give a proof using the latter method. Note,
+\begin{align*}
+\mathrm{L.H.S.} &= (n^2 + 1) + (n^2 + 2) + \cdots + (n+1)^2\\[0.5em]
+ &= (n^2 + 1) + (n^2 + 2) + \cdots + (n^2+2n+1)\\[0.5em]
+ &= \sum_{k=1}^{2n+1}(n^2 + k)\\[0.5em]
+ &= \sum_{k=1}^{2n+1}n^2 + \sum_{k=1}^{2n+1}k
+\end{align*}
+\begin{align*}
+\phantom{\mathrm{L.H.S.}} &= (2n+1)n^2 + \frac{(2n+1)((2n+1)+1)}{2}\\[0.5em]
+ &= (2n+1)n^2 + \frac{(2n+1)(2n+2)}{2}\\[0.5em]
+ &= (2n+1)n^2 + (2n + 1)(n+1)\\[0.5em]
+ &= (2n^3 + n^2) +(2n^2 + 2n + n + 1)\\[0.5em]
+ &= n^3 + (n^3 + 3n^2 + 3n + 1)\\[0.5em]
+ &= n^3 + (n + 1)^3\\[0.5em]
+ &= \mathrm{R.H.S.}
+\end{align*}
+This completes the proof.
+\end{proof}
+\end{example}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Prove or Disprove}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Basic principle for universally quantified statements. If you think they are true, provide a proof. If you think they are false, exhibit a counterexample.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}\hfill
+\begin{itemize}
+\item Prove or disprove: If $ab,\,bc,\,ca$ are even, then $a,\,b$ and $c$ are even.
+\begin{proof}
+This is false. A counterexample is found when we take $a = b = 2$ and $c = 1$.
+\end{proof}
+
+\item Prove or disprove: If $n^2 + n$ is even, then $n$ is even.
+\begin{proof}
+This is false. A counterexample is found when we take $n = 1$.
+\end{proof}
+
+%\item Prove or disprove: If $n$ is odd, then $n^3 + n^2$ is even.
+%\begin{proof}
+%This is true. Since $n$ is odd, therefore $n + 1$ is even, and so $n^3 + n^2 = n^2(n+1)$ is even.
+%\end{proof}
+
+\end{itemize}
+\end{example}
+
+\vspace*{1em}
+
+\begin{example}
+\[\text{\emph{Question.} Which integer $n \geq 3$ can be expressed as a sum of at least two consecutive integers?}\]
+\begin{proof}[Experiment]\renewcommand{\qed}{}
+\begin{align*}
+3 &= 1 + 2					& 12 &= 3 + 4 + 5\\[0.5em]
+4 &= \text{not possible} 	& 13 &= 6 + 7\\[0.5em]
+5 &= 2 + 3					& 14 &= 2 + 3 + 4 + 5\\[0.5em]
+6 &= 1 + 2 + 3 				& 15 &= 7 + 8 = 4 + 5 + 6 = 2 + 3 + 4 + 5\\[0.5em]
+7 &= 3 + 4					& 16 &= \text{not possible}
+\end{align*}
+\begin{align*}
+8 &= \text{not possible}		& 17 &= 8 + 9\\[0.5em]
+9 &= 4 + 5 = 2 + 3 + 4		& 18 &= 5 + 6 + 7 = 3 + 4 + 5 + 6\\
+10 &= 1 + 2 + 3 + 4		 	& &\vdots\\[0.5em]
+11 &= 5 + 6					
+\end{align*}
+\end{proof}
+
+\vspace*{0.5em}
+
+\begin{conjecture}\label{consec-conj}
+If $n$ is a positive integer that is not a power of $2$, then $n$ is a sum of two or more consecutive positive integers.
+\end{conjecture}
+
+\vspace*{1em}
+
+\begin{proof}[Observations]\renewcommand{\qed}{}\hfill
+\begin{itemize}
+\item Any odd integer can be written as a sum of \emph{two} consecutive integer, as an odd integer $n$ can be written, for some integer $k$, as
+\[n = 2k + 1 = k + (k + 1)\]
+\item Some integers can be written as a sum of consecutive integers in more than one way. What property of the integers control this? Possibly the number of odd factors.
+\end{itemize}
+\end{proof}
+
+\vspace*{1em}
+
+More ambitiously, we make the following conjecture
+\begin{conjecture}[Improved Conjecture \ref{consec-conj}]\label{consec-conj-impr}
+A positive integer $n \geq 3$ is a sum of two or more consecutive positive integers if and only if it is not a power of $2$.
+\end{conjecture}
+
+\vspace*{0.5em}
+
+\begin{proof}[Experiments towards a Proof]\renewcommand{\qed}{}
+Consider an integer $n$ that is not a power of $2$.
+\begin{itemize}[leftmargin=4em]
+\item[Case 1.] $n = 2\ell + 1$, an odd integer. In this case, we have seen \[{\color{indigo}n = \ell + (\ell + 1)}.\]
+
+\item[Case 2.] $n = 2(2\ell + 1)$.
+\begin{align*}
+2\cdot (2\cdot 1 + 1) = 2\cdot 3 = 6 &= 1 + 2 + 3\\[0.5em]
+2\cdot (2\cdot 2 + 1) = 2\cdot 5 = 10 &= 1 + 2 + 3 + 4\\[0.5em]
+2\cdot (2\cdot 3 + 1) = 2\cdot 7 = 14 &= 2 + 3 + 4 + 5\\[0.5em]
+2\cdot (2\cdot 4 + 1) = 2\cdot 9 = 18 &= 3 + 4 + 5 + 6 = 5 + 6 + 7
+\end{align*}
+We claim
+\[{\color{indigo}2(2\ell + 1) = \underbrace{(\ell - 1) + \ell + (\ell + 1) + (\ell + 2)}_{\text{$4$ terms}}},\quad \ell \geq 2\]
+
+\item[Case 3.] $n = 2^2(2\ell + 1)$. 
+\begin{align*}
+2^2\cdot (2\cdot 1 + 1) = 2^2\cdot 3 = 12 &= 3 + 4 + 5\\[0.5em]
+2^2\cdot (2\cdot 2 + 1) = 2^2\cdot 5 = 20 &= 2 + 3 + 4 + 5 + 6
+\end{align*}\newpage
+\begin{align*}
+2^2\cdot (2\cdot 3 + 1) = 2^2\cdot 7 = 28 &= 1 + 2 + 3 + 4 + 5 + 6 + 7\\[0.5em]
+2^2\cdot (2\cdot 4 + 1) = 2^2\cdot 9 = 36 &= 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8\\[0.5em]
+2^2\cdot (2\cdot 5 + 1) = 2^2\cdot 11 = 44 &= 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9\\[0.5em]
+2^2\cdot (2\cdot 6 + 1) = 2^2\cdot 13 = 52 &= 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10
+\end{align*}
+We claim
+\[{\color{indigo}2^2(2\ell + 1) = \underbrace{(\ell - 3) + (\ell - 2) + (\ell - 1) + \ell + (\ell + 1) + (\ell + 2) + (\ell + 3) + (\ell + 4)}_{\text{$8$ terms}}},\quad \ell \geq 4\]
+
+\item[Case 4.] $n = 2^3(2\ell + 1)$. 
+\[\vdots\]
+Do your own experiments.
+\end{itemize}
+\end{proof}
+
+\vspace*{0.5em}
+
+\begin{proof}[Proof of Conjecture \ref{consec-conj-impr}]\hfill
+\begin{itemize}[itemsep=2em]
+\item[$(\Rightarrow)$] Suppose $n \geq 3$ is a sum of consecutive integers, we show $n$ is not a power of $2$ by exhibiting an odd factor ($\geq 3$).\\
+\begin{subproof}
+Suppose that $n = k + (k + 1) + \cdots + (k + r)$ for some $k > 0$ and $r\geq 1$. Then,
+\begin{align*}
+n = \underbrace{k + (k + 1) + \cdots + (k + r)}_{\text{$r + 1$ terms}} &= (r + 1)k + \sum_{\ell = 0}^r\ell\\[0.5em]
+ &= (r + 1)k + \frac{r(r + 1)}{2}\\[0.5em]
+ &= (r + 1)\left(k + \frac{r}{2}\right) = (r + 1)\left(\frac{2k+r}{2}\right)
+\end{align*}
+\item[] If $r$ is even, then $r + 1$ is an odd factor of $n$.
+\item[] If $r$ is odd, in $n = \left(\dfrac{r+1}{2}\right)(2k+r)$, $2k + r$ is an odd factor.
+\end{subproof}
+\vspace*{0.5em}
+While what we have above is a valid proof, a more illuminating proof is obtained by starting at the middle summand of $n$.
+\begin{itemize}[leftmargin=4em]
+\item[Case 1.] Suppose $n$ is a sum of odd-many, say $2\ell + 1 \geq 3$, consecutive positive integers. Then, we write $n$ as
+\[n = \underbrace{(t - \ell) + \cdots (t - 2) + (t - 1)}_{\text{$\ell$ terms}} + t + \underbrace{(t + 1) + (t + 2) \cdots (t + \ell)}_{\text{$\ell$ terms}}\]
+Since these are positive integers, we get $t - \ell > 0$, or equivalently $\ell < t$.
+Re-arranging, we have
+\begin{align*}
+n &= (t - \ell) + \cdots + (t - 2) + (t - 1) + t + (t + 1) + (t + 2) + \cdots + (t + \ell)\\[0.5em]
+ &= (t - \ell) + (t + \ell) + \cdots + (t - 2) + (t + 2) + (t - 1) + (t + 1) + t\\[0.5em]
+ &= \underbrace{2t + \cdots + 2t + 2t}_{\text{$\ell$ terms}} + t\\[0.5em]
+ &= 2\ell t + t\\[0.5em]
+ &= (2\ell + 1)t
+\end{align*}
+Thus $n$ has an odd factor $2\ell + 1 \geq 3$.
+
+\item[Case 2.] Suppose $n$ is a sum of even-many, say $2t \geq 2$, consecutive positive integers. Then, we write $n$ as
+\[n = \underbrace{(\ell - t + 1) + \cdots + (\ell - 1) + \ell}_{\text{$t$ terms}} + \underbrace{(\ell + 1) + (\ell + 2) + \cdots + (\ell + t)}_{\text{$\ell$ terms}}\]
+Since these are positive integers, we get $\ell - (t - 1) > 0$, or equivalently $\ell \geq t$.
+Re-arranging, we have
+\begin{align*}
+n &= (\ell - (t - 1)) + \cdots + (\ell - 1) + \ell + (\ell + 1) + (\ell + 2) + \cdots + (\ell + t)\\[0.5em]
+ &= (\ell - t + 1) + (\ell + t) + \cdots + (\ell - 1) + (\ell + 2) + \ell + (\ell + 1)\\[0.5em]
+ &= \underbrace{(2\ell + 1) + \cdots + (2\ell + 1) + (2\ell + 1)}_{\text{$t$ terms}}\\[0.5em]
+ &= (2\ell + 1)t
+\end{align*}
+Thus $n$ has an odd factor $2\ell + 1 \geq 3$.
+\end{itemize}
+\item[$(\Leftarrow)$] Suppose $n$ is not a power of $2$, then we show that it can be written as a sum of at least two consecutive numbers. We can write such an $n$ as
+\[n = (2\ell + 1)t\]
+for some integers $\ell, t > 1$. We have two cases:
+\begin{itemize}[leftmargin=4em]
+\item[Case A.] $\ell < t$, in which case can use Case 1. from above to re-write $n$ as a sum of consecutive numbers.
+
+\item[Case B.] $\ell \geq t$, in which case can use Case 2. from above to re-write $n$ as a sum of consecutive numbers.
+\end{itemize}
+\end{itemize}
+This completes the proof.
+\end{proof}
+
+\vspace*{1em}
+
+Thus, Conjecture \ref{consec-conj-impr} is now a theorem. 
+\begin{theorem}\label{thm:consec-conj}
+A positive integer $n \geq 3$ is a sum of two or more consecutive positive integers if and only if it is not a power of $2$.
+\end{theorem}
+
+\vspace*{1em}
+
+\begin{example}
+Consider $n = 15 = {\color{firebrick}3}\cdot 5 = {\color{firebrick}5}\cdot 3 = {\color{firebrick}15} \cdot 1$. It has three odd factors $\geq 3$, we should be able to obtain three ways of writing it as a sum of consecutive integers. In terms of the notation introduced in the proof above, we have
+\begin{itemize}[leftmargin=4em]
+\item[Case 1.] Consider $15 = 3\cdot 5$, here $2\ell + 1 = 3$ and $t = 5$, so $\ell = 1$ and $\ell < t$. Hence
+\[15 = 4 + 5 + 6\]
+\item[Case 2.] Consider $15 = 5\cdot 3$, here $2\ell + 1 = 5$ and $t = 3$, so $\ell = 2$ and $\ell < t$. Hence
+\[15 = 1 + 2 + 3 + 4 + 5\]
+\item[Case 3.] Consider $15 = 15\cdot 1$, here $2\ell + 1 = 15$ and $t = 1$, so $\ell = 7$ and $\ell \geq t$. Hence
+\[15 = 7 + 8\]
+\end{itemize}
+\end{example}
+\end{example}
+
+\vspace*{1em}
+
+\begin{corollary}[to Theorem \ref{thm:consec-conj}]
+An odd prime $p$ can only be written as a sum of two consecutive integers. \[p = \left(\dfrac{p-1}{2}\right) + \left(\dfrac{p+1}{2}\right).\]
+\end{corollary}

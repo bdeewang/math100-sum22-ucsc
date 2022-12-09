@@ -1,0 +1,220 @@
+\vspace*{1em}
+
+\begin{discussion}
+We have the set of positive integers
+\[\zz_{>0} = \set{1,2,3,\ldots}\]
+The principle of mathematical induction is a method of proof for statements of the form
+\[\forall n \in \zz_{>0},\ P(n)\]
+\[\text{$P(1)$ is true, and $P(2)$ is true, and $P(3)$ is true, and $\ldots$}\]
+\[\text{and $P(n)$ is true, and $P(n+1)$ is true, and $\ldots$}\]
+To prove such a statement, do the following
+\begin{itemize}[leftmargin=4em]
+\item[Step 1.] (\emph{Base Step}, or \emph{Initial Step}) Prove that $P(1)$ is true.
+\item[Step 2.] (\emph{Inductive Step}) Prove that for all $k \geq 1,\ P(k)$ implies $P(k + 1)$. That is, prove 
+\[\forall k \in \zz_{>0},\ P(k) \implies P(k+1)\]
+In words, assume $P(k)$ is true (\emph{inductive hypothesis}) and conclude $P(k+1)$ is true for any $k \geq 1$.
+\end{itemize}
+This is the {\color{blue}(first)} \cdef{principle\ of\ mathematical\ induction}.\\
+\\
+What are we doing?
+\[\begin{tikzcd}
+\underset{\text{(Step 1)}}{\text{$P(1)$ is true}} \arrow[r, "{\text{\scriptsize for $k=1$}}"',draw=none]\arrow[r, "\text{Step 2}"] & \text{$P(2)$ is true} \arrow[r, "{\text{\scriptsize for $k=2$}}"',draw=none]\arrow[r, "\text{Step 2}"] & \text{$P(3)$ is true}  \arrow[r, "{\text{\scriptsize for $k=3$}}"',draw=none]\arrow[r, "\text{Step 2}"] &       \cdots \\
+\cdots  \arrow[r, "{\text{\scriptsize for $k=n-1$}}"',draw=none]\arrow[r, "\text{Step 2}"]  & \text{$P(n)$ is true} \arrow[r, "{\text{\scriptsize for $k=n$}}"',draw=none]\arrow[r, "\text{Step 2}"] & \text{$P(n+1)$ is true} \arrow[r] & \cdots
+\end{tikzcd}\]
+The logical foundation is the fact that the statement \[P \land (P \implies Q) \implies Q\] is a tautology. So, if $P(k)$ is true and $P(k) \implies P(k+1)$ is true, then $P(k+1)$ is true. 
+\end{discussion}
+
+%\vspace*{1em}
+
+\begin{example}
+Show that for $n \geq 1$,
+\[1 + 2 + \cdots + n = \frac{n(n+1)}{2}\]
+\end{example}
+\begin{proof}
+We have the open sentence
+\[P(n):1 + 2 + \cdots + n = \frac{n(n+1)}{2}\]
+We give a proof to the statement \emph{for all $n \geq 1,\ P(n)$ is true} using the principle of mathematical induction.
+\item[] (Base Step, $n = 1$) Consider the statement $P(1)$. L.H.S. $ = 1$, while
+\[\mathrm{R.H.S.} = \frac{1(1 + 1)}{2} = \frac{2}{2} = 1\]
+Therefore $P(1)$ is true.\\
+\item[] (Inductive Step) Assume $P(k)$ is true, that is,
+\[1 + 2 + \cdots + k = \frac{k(k+1)}{2}\]
+We wish to prove $P(k+1)$ is true, that is, we wish to prove the following equality
+\begin{align*}
+1 + 2 + \cdots + (k + 1) &= \frac{(k+1)((k+1)+1)}{2}\\[1em]
+ &= \frac{(k+1)(k+2)}{2}
+\end{align*}
+is true.\\[0.5em]
+Note,
+\begin{align*}
+1 + 2 + \cdots + (k + 1) &= 1 + 2 + \cdots + k + (k + 1)\\[0.5em]
+ &= \frac{k(k+1)}{2} + (k+1) && \text{by the inductive hypothesis}\\[0.5em]
+ &= (k+1)\left(\frac{k}{2} + 1\right)\\[0.5em]
+ &= \frac{(k+1)(k+2)}{2}
+\end{align*}
+Therefore $P(k+1)$ is true.\\
+\\
+Hence, by the principle of mathematical induction, $P(n)$ is true for every integer $n \geq 1$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{discussion}
+It happens often that our base case for a statement $P(n)$, that is the first instance for which $P(n)$ is true, does not occur at $n = 1$, but may occur for a larger integer, say some $n = m$. We may still use the principle of mathematical induction by ``starting induction from $n = m$''. One then proves 
+\begin{itemize}
+\item[](Base Case) Prove $P(m)$ is true.
+\item[](Inductive Step) For any $k \geq m$, prove $P(k) \implies P(k+1)$ is true. 
+\end{itemize}
+This is the {\color{blue}(second)} \cdef{principle\ of\ mathematical\ induction}.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{example}
+Show that for $n \geq 5$, we have $2^n > n^2$.
+\end{example}
+\begin{proof}[Experiment]
+\renewcommand{\qed}{}\hfill
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{c|cccc|>{\columncolor{newblue!30}}c>{\columncolor{newblue!20}}c>{\columncolor{newblue!20}}c>{\columncolor{newblue!20}}c}
+$n$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $\cdots$\\
+\hline
+$2^n$ & $2$ & $4$ & $8$ & $16$ & $32$ & $64$ & $128$ & $\cdots$\\
+$n^2$ & $1$ & $4$ & $9$ & $16$ & $25$ & $36$ & $49$ & $\cdots$\\
+\end{tabular}
+}
+\end{center}
+\end{proof}
+\begin{proof}
+We have the open sentence
+\[P(n):2^n = n^2\]
+We give a proof to the statement \emph{for all $n \geq 5,\ P(n)$ is true} using the principle of mathematical induction.
+\item[] (Base Step, $n = 5$) Consider the statement $P(5)$. Note that
+\[2^5 = 32 > 25 = 5^2\]
+Therefore $P(1)$ is true.\\
+\item[] (Inductive Step) Assume $P(k)$ is true for some $k \geq 5$, that is, $2^k > k^2$. We wish to prove $P(k+1)$ is true, that is, we wish to prove $2^{k+1} > (k+1)^2$ is true.\\[0.5em]
+Note,
+\begin{align*}
+2^{k+1} - (k+1)^2 &= 2\cdot 2^k - (k + 1)^2\\[0.5em]
+ &> 2\cdot k^2 - (k + 1)^2 && \text{by the inductive hypothesis}\\[0.5em]
+ &= 2k^2 - (k^2 + 2k + 1)\\[0.5em]
+ &= k^2 - 2k - 1\\[0.5em]
+ &= k^2 - 2k + 1 - 2\\[0.5em]
+ &= (k - 1)^2 - 2\\[0.5em]
+ &> 0 && \text{for any $k \geq 5$}
+\end{align*}
+Therefore $P(k+1)$ is true.\\
+\\
+Hence, by the principle of mathematical induction, $P(n)$ is true for every integer $n \geq 5$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+Show that for $n \geq 2$ and for any $a_1,\ldots,a_n \geq 0$, we have
+\[(n-1)\left(\sum_{i=1}^n a_i^2 \right) \geq 2 \sum_{1\leq i < j \leq n}a_ia_j\]
+\begin{itemize}[leftmargin=4em]
+\item[$(n=2)$] For $a_1,a_2 \geq 0$
+\[a_1^2 + a_2^2 \geq 2a_1a_2\]
+\item[$(n=3)$] For $a_1,a_2,a_3 \geq 0$
+\[2(a_1^2 + a_2^2 + a_3^2) \geq 2(a_1a_2 + a_2a_3 + a_1a_3)\]
+\item[$(n=4)$] For $a_1,a_2,a_3,a_4 \geq 0$
+\[3(a_1^2 + a_2^2 + a_3^2 + a_4^2) \geq 2(a_1a_2 + a_1a_3 + a_1a_4 + a_2a_3 + a_2a_4 + a_3a_4)\]
+\end{itemize}
+\end{example}
+\begin{proof}
+We have the open sentence
+\[P(n):(n-1)\left(\sum_{i=1}^n a_i^2 \right) \geq 2 \sum_{1\leq i < j \leq n}a_ia_j,\quad a_1,\ldots,a_n \geq 0\]
+We give a proof to the statement \emph{for all $n \geq 2,\ P(n)$ is true} using the principle of mathematical induction.
+\item[] (Base Step, $n = 2$) Consider the statement \[P(2):a_1^2 + a_2^2 \geq 2a_1a_2,\quad a_1,a_2 \geq 0\] Note that
+\begin{align*}
+a_1^2 + a_2^2 - 2a_1a_2 &= (a_1)^2 - 2(a_1)(a_2) + (a_2)^2\\[0.5em]
+ &= (a_1 - a_2)^2\\[0.5em]
+ &\geq 0
+\end{align*}
+Therefore $P(2)$ is true.\\
+\item[] (Inductive Step) Assume $P(k)$ is true for some $k \geq 2$, that is, \[(k-1)\left(\sum_{i=1}^k a_i^2 \right) \geq 2 \sum_{1\leq i < j \leq k}a_ia_j,\quad a_1,\ldots,a_k \geq 0.\] We wish to prove $P(k+1)$ is true, that is, we wish to prove \[k\left(\sum_{i=1}^{k+1} a_i^2 \right) \geq 2 \sum_{1\leq i < j \leq k+1}a_ia_j,\quad a_1,\ldots,a_{k+1} \geq 0\] is true. Our first step is to re-write the L.H.S. $-$ R.H.S. in such a way that we can use the inductive hypothesis $P(k)$. We observe
+
+\begin{align*}
+k\left(\sum_{i=1}^{k+1} a_i^2 \right)& - 2 \sum_{1\leq i < j \leq k+1}a_ia_j\\[1em]
+ &= (k-1)\left(\sum_{i=1}^{k+1} a_i^2 \right) + \left(\sum_{i=1}^{k+1} a_i^2 \right) - 2 \sum_{1\leq i < j < k+1}a_ia_j - 2 \sum_{1\leq i < j = k+1}a_ia_j\\[1em]
+ &= (k-1)\left(\sum_{i=1}^{k} a_i^2 + a_{k+1}^2 \right) + \left(\sum_{i=1}^{k+1} a_i^2 \right) - 2 \sum_{1\leq i < j \leq k}a_ia_j - 2 \sum_{1\leq i \leq k}a_ia_{k+1}\\[1em]
+ &= (k-1)a_{k+1}^2 + \left(\sum_{i=1}^{k+1} a_i^2 \right) - 2 \sum_{i=1}^{k}a_ia_{k+1} + \underbrace{(k-1)\left(\sum_{i=1}^{k} a_i^2 \right)- 2 \sum_{1\leq i < j \leq k}a_ia_j}_{\text{$\geq 0$ by $P(k)$}}
+\end{align*}
+Therefore by our observations above and the inductive hypothesis, we have
+\begin{align*}
+k\left(\sum_{i=1}^{k+1} a_i^2 \right) - 2 \sum_{1\leq i < j \leq k+1}a_ia_j & \geq (k-1)a_{k+1}^2 + \left(\sum_{i=1}^{k+1} a_i^2 \right) - 2 \sum_{i=1}^{k}a_ia_{k+1}\\[1em]
+ &= ka_{k+1}^2 - a_{k+1}^2 + \left(\sum_{i=1}^{k} a_i^2 + a_{k+1}^2 \right) - 2 \sum_{i=1}^{k}a_ia_{k+1} - a_{k+1}^2\\[1em]
+ &= \left(\sum_{i=1}^{k} a_i^2 \right)+ka_{k+1}^2 - 2 \sum_{i=1}^{k}a_ia_{k+1}\\[1em]
+ &= (a_1^2 + a_{k+1}^2 - 2a_1a_{k+1}) + (a_2^2 + a_{k+1}^2 - 2a_2a_{k+1}) \,+\\ &\qquad\cdots + (a_k^2 + a_{k+1}^2 - 2a_ka_{k+1})\\[1em]
+ &= (a_1 - a_{k+1}) + (a_2 - a_{k+1})^2 + \cdots + (a_k - a_{k+1})^2 \geq 0
+\end{align*}
+Therefore $P(k+1)$ is true.\\
+\\
+Hence, by the principle of mathematical induction, $P(n)$ is true for every integer $n \geq 2$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}[try it yourself!]\label{geom-sum}
+Show that for $n \geq 1$ and a real number $a \neq 1$, we have
+\[1 + a + \cdots + a^n = \frac{1 - a^{n+1}}{1 - a}\]
+\end{example}
+
+\vspace*{1em}
+
+\begin{remark}
+Re-writing the equality in Example \ref{geom-sum} as
+\[1 - a^{n+1} = (1-a)(1 + a + \cdots + a^n), \tag{$\star$}\]
+this is now true for $a = 1$ as well. So $(\star)$ is true for all real numbers $a$.\\
+\\
+If we write $a = y/x$ for real numbers $x,y$, we get
+\[1 - (y/x)^{n+1} = (1-(y/x))(1 + (y/x) + \cdots + (y/x)^n)\]
+Multiplying both sides by $x^n$, we get
+\[x^{n+1} - y^{n+1} = (x - y)(x^n + x^{n-1}y + \cdots + xy^{n-1} + y^n)\]
+This is the formula we used in Example \ref{example:lec13-ex1}.
+\end{remark}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Strong Principle of Mathematical Induction}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+The \cdef{strong\ principle\ of\ mathematical\ induction} is a variation of the principle of mathematical induction. We are still trying to prove statements of the form 
+\[\forall n \geq 1,\ P(n)\]
+or more generally {\color{indigo}$\forall n \geq m,\ P(n)$} for some fixed integer $m$.
+This time our steps are:
+\begin{itemize}[leftmargin=*]
+\item[](Base Case)\\[0.5em] Prove $P(1)$ is true; or more generally {\color{indigo}$P(m)$ is true.}
+\item[](Inductive Step)\\[0.5em] For any $k \geq 1$, prove \[\text{$P(1)$ and $P(2)$ and $\ldots$ and $P(k)$ together imply $P(k+1)$}\] 
+Or more generally, {\color{indigo} for all $k \geq m$, prove $P(m) \land P(m+1) \land \cdots \land P(k) \implies P(k+1)$ is true}.
+\end{itemize}
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{theorem}[Prime Factorisation Theorem]
+Every positive integer $n \geq 2$ is a product of primes
+\end{theorem}
+\begin{proof}
+We have the open sentence
+\[P(n):n \text{ is a product of primes}\]
+We give a proof to the statement \emph{for all $n \geq 2,\ P(n)$ is true} using the strong principle of mathematical induction.
+\item[] (Base Step, $n = 2$) Consider the statement $P(2)$. Since $2$ is already a prime, therefore $P(2)$ is true.\\
+\item[] (Inductive Step) Let $k \geq 2$. \st{Assume $P(k)$ is true for $k$} Assume $P(2),\ldots,P(k)$ are true, equivalently, assume $P(\ell)$ is true for all $2 \geq \ell \leq k$. That is, assume every integer $2 \leq \ell \leq k$ is a product of primes. We wish to prove $P(k+1)$ is true, that is, we wish to prove $k + 1$ is a product of primes.\\
+\\
+We have two cases: $k + 1$ is a prime, or $k + 1$ is not a prime.
+\begin{itemize}[itemsep = 1em,leftmargin=4em]
+\item[Case 1.] If $k + 1$ is a prime, then $k + 1$ is already a product of primes. 
+\item[Case 2.] If $k + 1$ is not a prime, then it has a divisor $a \neq 1,k+1$. Necessarily, $a\mid (k+1)$ and $1 < a < k+1$. Hence, there exists an integer $b$ such that \[k + 1 = ab,\]
+and necessarily $1 < b < k + 1$. By the inductive hypothesis $P(a)$ and $P(b)$ are true, that is, $a$ and $b$ are a product of primes. Thus, $k + 1 = ab$ is necessarily also a product of primes.
+\end{itemize}
+Therefore $P(k+1)$ is true.\\
+\\
+Hence, by the strong principle of mathematical induction, for any $n \geq 2,\ P(n)$ is true. That is, every integer $n \geq 2$ is a product of primes.
+\end{proof}

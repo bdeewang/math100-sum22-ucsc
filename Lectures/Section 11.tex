@@ -1,0 +1,273 @@
+\vspace*{1em}
+
+\begin{discussion}
+We want to ``count the number of elements in a set''. For finite sets, we simply do that, count the number of elements in the set. For infinite sets, how do we ``count''? There are many sets with infinitely many elements ; for example
+\[\nn \subsetneq \zz \subsetneq \qq \subsetneq \rr \subsetneq \cc\]
+are infinite sets. Here $\nn \defeq \zz_{>0} = \set{1,2,3,\ldots}$. How can we compare the number of elements in these sets? Since the above sets are related by proper inclusions, we may expect there are different levels of infinity.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{lemma}
+Let $A,B$ be finite sets, then $\abs{A} = \abs{B}$ if and only if there exists a bijection $f:A \to B$.
+\end{lemma}
+\begin{proof}\hfill
+\begin{itemize}
+\item[$(\Rightarrow)$] Suppose $\abs{A} = \abs{B} = n$; write $A = \set{a_1,\ldots,a_n}$ and $B = \set{b_1,\ldots,b_n}$. Define the function
+\[f:A \to B,\ a_i \mapsto b_i,\]
+this is evidently a bijection.
+
+\item[$(\Leftarrow)$] Suppose there exists a bijection $f:A \to B$. Let $\abs{A} = n$; write $A = \set{a_1,\ldots,a_n}$. Since $f$ is a bijection, it is in particular an injection, therefore $f(A) = \set{f(a_1),\ldots,f(a_n)}$ is such that $|f(A)| = n$. Since $f$ is also surjective, $f(A) = B$, and hence $|B| = n$. \end{itemize}
+%This completes the proof.
+\vspace*{-\baselineskip}
+\end{proof}
+
+\vspace*{1em}
+
+This motivates the following general definition.
+\begin{definition}
+Let $A,\,B$ be sets. $A$ and $B$ are said to be \cdef{numerically\ equivalent} (or {\color{blue}have the same \cdef{cardinality}}, or {\color{blue}have the same number of elements}), denoted $\abs{A} = \abs{B}$, if there exits a bijection
+\[f:A \to B\]
+If $A$ is finite with $n$-many elements, we write $|A| = n$.
+\end{definition}
+
+\vspace*{1em}
+
+\begin{theorem}\label{thm:num-eq}
+Numerical equivalence is a equivalence relation among sets. 
+%The equivalence class of a set $A$ is denoted $\abs{A}$.
+\end{theorem}
+
+\vspace*{1em}
+
+\begin{definition}
+Let $A$ be a set.
+\begin{itemize}
+\item[$\bullet$] $A$ is said to be \cdef{denumerable} if $\abs{A} = \abs{\nn}$, that is, if there exists a bijection
+\[f:\nn \to A\]
+This means we can enumerate, label with positive integers, the elements of $A$. So, we can write $A = \set{a_1,a_2,\ldots}$.
+\item[$\bullet$] $A$ is said to be \cdef{countable} if $\abs{A} < \infty$ or $\abs{A} = \abs{\nn}$, that is, if $A$ is finite or denumerable. 
+\item[$\bullet$] $A$ is said to be \cdef{uncountable} if $A$ is not countable.
+\end{itemize}
+\end{definition}
+
+\vspace*{1em}
+
+\begin{discussion}
+We will soon see that there are different levels of infinity, different infinite cardinalities. We will try and see that
+\[\underbrace{\abs{\nn} = \abs{\zz} = \abs{\qq}}_{\text{denumerable}} < \abs{\rr} = \abs{\rr \times \rr} = \abs{\rr \times \rr \times \rr} \underbrace{< (?) < (??) < \cdots  < (?!?!?!) < \cdots}_{\text{these sets do exist}}\]
+\begin{itemize}
+\item $\abs{\nn} < \abs{\rr}$ was proved by Cantor using \emph{Cantor's diagonal argument}.
+\item $\abs{\rr} = \abs{\rr^n}$, that is, there exists a bijection $f:\rr \to \rr^n$. It is enough to show $\abs{\rr} = \abs{\rr^2}$, that is, the real line and the plane have the same number of points, this is done by considering \emph{space-filling curves} (or \emph{Peano curves}).
+\end{itemize}
+\vspace*{0.5em}
+{\bf Continuum Hypothesis.} Can there be an infinite set $A$ such that $\abs{\nn} < \abs{A} < \abs{\rr}$.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{theorem}\label{thm:sub-count}\hfill
+\begin{itemize}
+\item[(1)] An infinite subset of a denumerable set is denumerable.
+\item[(2)] A cartesian product of denumerable sets is denumerable.
+\end{itemize}
+\end{theorem}
+\begin{proof}[Proof of Theorem \ref{thm:sub-count}(1)]
+Let $A$ be a denumerable set and let $S \subseteq A$ be infinite. Then, by definition, there exists a bijection
+\[f:\nn \to A\]
+Consider $f^{-1}(S) \subseteq \nn$, necessarily infinite, we order the elements in this set as 
+\[k_1 < k_2 < \cdots < k_n < \cdots\]
+Then, we can define a bijection
+\[g:\nn \to f^{-1}(S),\ i \mapsto k_i\]
+Thus, $\abs{\nn} = |f^{-1}(S)|$.\\
+\\
+Now, note that the function
+\[f^{-1}(S) = \setp{k \in \nn}{f(k) \in S} \to S: k \mapsto f(k)\]
+is a bijection; and hence $|f^{-1}(S)| = |S|$.\\
+\\
+Thus, $\abs{S} = \abs{\nn}$ (as numerical equivalence is, in particular, transitive, by Theorem \ref{thm:num-eq}) and therefore $S$ is denumerable.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+$2\nn$, the set of even numbers, is denumerable. One can explicitly also give a bijection
+\[2\nn \to \nn:n \mapsto n/2\]
+\end{example}
+
+%\vspace*{1em}
+
+\begin{remark}\label{rmk:inj-count}
+Theorem \ref{thm:sub-count} (1) tells us that, for an infinite set $A$, it is enough to exhibit an \emph{injective function} $f:A \to X$, where $X$ is denumerable, to conclude $A$ is denumerable.\\
+\\
+Since if $f$ is injective, then $f:A \to f(A)$ is a bijection, so $\abs{A} = \abs{f(A)}$. Since $A$ is infinite, so is $f(A)$. Now, $f(A)$ is an infinite subset of $X$, a denumerable set, and is therefore denumerable.
+\end{remark}
+
+\vspace*{1em}
+
+\begin{proposition}
+$\abs{\zz} = \abs{\nn}$
+\end{proposition}
+\begin{proof}[Strategy]\renewcommand{\qed}{}
+Our strategy is the following: we will send even numbers to positive integers, and odd numbers to non-positive integers.
+\[\begin{tikzcd}[scale=0.75]
+{\color{firebrick}1} \arrow[dd, maps to] & {\color{newblue}2} \arrow[d, maps to] & {\color{firebrick}3} \arrow[dd, maps to] & {\color{newblue}4} \arrow[d, maps to] & {\color{firebrick}5} \arrow[dd, maps to] & {\color{newblue}6} \arrow[d, maps to] & {\color{firebrick}7} \arrow[dd, maps to] & {\color{newblue}8} \arrow[d, maps to] & {\color{firebrick}9} \arrow[dd, maps to] & \cdots \\[-0.5em]
+                                         & {\color{newblue}1}                    &                                          & {\color{newblue}2}                    &                                          & {\color{newblue}3}                    &                                          & {\color{newblue}4}                    &                                          & \cdots \\[-1em]
+{\color{firebrick}0}                     &                                       & {\color{firebrick}-1}                    &                                       & {\color{firebrick}-2}                    &                                       & {\color{firebrick}-3}                    &                                       & {\color{firebrick}-4}                    & \cdots
+\end{tikzcd}\]
+\end{proof}
+\begin{proof}
+We explicitly construct a bijection $\nn \to \zz$. Consider the function
+\[f:\nn \to \zz,\ n \mapsto \begin{cases}
+\dfrac{n}{2} & \text{if $n$ is even}\\[1.5em]
+\dfrac{1 - n}{2} & \text{if $n$ is odd}
+\end{cases}\]
+One directly verifies that this is a bijection.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{proof}[Proof of Theorem \ref{thm:sub-count}(2)]\renewcommand{\qed}{}
+Let $A$ and $B$ be two denumerable sets. Then we can order elements of $A$ and $B$ as
+\begin{align*}
+A &= \set{a_1,a_2,a_3,\ldots,a_n,\ldots}\\[0.5em]
+B &= \set{b_1,b_2,b_3,\ldots,b_n,\ldots}
+\end{align*}
+Then we can order $A \times B$ as follows\\
+
+\begin{minipage}{0.7\textwidth}
+\[\begin{tikzpicture}
+	\node at (0,6) {$a_1$};
+	\node at (1,6) {$a_2$};
+	\node at (2,6) {$a_3$};
+	\node at (3,6) {$a_4$};
+	\node at (4,6) {$a_5$};
+	\node at (5,6) {$\cdots$};
+
+	\node at (-1,5) {$b_1$};
+	\node at (-1,4) {$b_2$};
+	\node at (-1,3) {$b_3$};
+	\node at (-1,2) {$b_4$};
+	\node at (-1,1) {$b_5$};
+	\node at (-1,0) {$\vdots$};
+
+	\node (A) at (0,5) {$\bullet$};
+	\node[above,yshift=1pt] at (0,5) {\tiny$(a_1,b_1)$};
+	\node (B) at (1,5) {$\bullet$};
+	\node (C) at (2,5) {$\bullet$};
+	\node (D) at (3,5) {$\bullet$};
+	\node (E) at (4,5) {$\bullet$};
+
+	\node (F) at (0,4) {$\bullet$};
+	\node[above left,xshift=3pt,yshift=1pt] at (0,4) {\tiny$(a_1,b_2)$};
+	\node (G) at (1,4) {$\bullet$};
+	\node (H) at (2,4) {$\bullet$};
+	\node (I) at (3,4) {$\bullet$};
+	
+	\node (J) at (0,3) {$\bullet$};
+	\node (K) at (1,3) {$\bullet$};
+	\node (L) at (2,3) {$\bullet$};
+
+	\node (M) at (0,2) {$\bullet$};
+	\node (N) at (1,2) {$\bullet$};
+
+	\node (O) at (0,1) {$\bullet$};
+
+	\draw[->,semithick,newblue] (A)--(B);
+	\draw[->,semithick,newblue] (B)--(F);
+	\draw[->,semithick,newblue] (F)--(J);
+	\draw[->,semithick,newblue] (J)--(G);
+	\draw[->,semithick,newblue] (G)--(C);
+	\draw[->,semithick,newblue] (C)--(D);
+	\draw[->,semithick,newblue] (D)--(H);
+	\draw[->,semithick,newblue] (H)--(K);
+	\draw[->,semithick,newblue] (K)--(M);
+	\draw[->,semithick,newblue] (M)--(O);
+	\draw[->,semithick,newblue] (O)--(N);
+	\draw[->,semithick,newblue] (N)--(L);
+	\draw[->,semithick,newblue] (L)--(I);
+	\draw[->,semithick,newblue] (I)--(E);
+	
+	\node at (0,0) {$\vdots$};
+	\node at (5,5) {$\cdots$};
+	\node at (3,2) {$\ddots$};
+\end{tikzpicture}\]
+\end{minipage}\hspace*{-3em}
+\begin{minipage}{0.3\textwidth}
+\raisebox{0.15em}{$\begin{tikzpicture} \draw[->,semithick,newblue] (0.5,0)--(1,0); \end{tikzpicture}$} gives us one way to order all elements in $A \times B$, hence $\abs{\nn} = \abs{A \times B}$.\hfill$\square$
+\end{minipage}
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{discussion}
+We saw that $\abs{\zz} = \abs{\nn}$. This is a common phenomenon with infinite sets, and a property not shared with finite sets: infinite sets may have the same cardinality as a proper subsets.\\
+\\
+Our goal now is to prove $\abs{\qq} = \abs{\nn}$ and $\abs{\nn} < \abs{\rr}$. That is, that $\qq$ is denumerable and $\rr$ is uncountable.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{theorem}
+The set $\qq$ is countable. 
+\end{theorem}
+\begin{proof}
+We will show that there is a injective map from $\qq$ to a denumerable set, and we will have proven that $\qq$ is denumerable as per Remark \ref{rmk:inj-count}.\\
+\\
+Note that any rational number $r \in \qq$ can be written in its reduced form, that is, as
+\[r = \frac{a}{b},\quad \text{$a \in \zz$, $b \in \nn$, and $a$ and $b$ have no common factors}\]
+Then we have the following injective function
+\[f:\qq = \left\{\frac{a}{b}\ \big\vert\; \frac{a}{b}\text{ is in reduced form}\right\} \to \zz \times \nn,\ \frac{a}{b} \mapsto (a,b)\]
+Note that this map is not surjective, since, for example, $(4,6) \in \zz \times \nn$ is not in the range of $f$ because
+\[\frac{4}{6} = \frac{2}{3},\;\text{ and }\; f\left(\frac{2}{3}\right) = (2,3)\]
+In any case, this completes the proof.
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Uncountable Sets}
+\end{center}
+\end{mdframed}
+
+\begin{theorem}
+The open interval $(0,1)$ has the same cardinality as $\rr$.
+\end{theorem}
+\begin{proof}
+The main idea is to find a function that 	``stretches $(0,1)$'' to $\rr$. Consider the function
+\[f:(0,1) \to \rr,\; x \mapsto -\frac{1}{x} + \frac{1}{1 - x}\]
+It's straightforward to show it is injective but for surjectivity we are forced to revert to some limit arguments that are beyond the scope of this course. To convince yourself, you can graph the function and see that the range is indeed all of $\rr$.\\
+\\
+Thus, $\abs{(0,1)} = \abs{\rr}$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{theorem}
+$\abs{\nn} < \abs{\rr}$
+\end{theorem}
+\begin{proof}
+In view of the previous theorem, it suffices to show that $\abs{\nn} < \abs{(0,1)}$. For the sake of contradiction, assume $\abs{(0,1)} = \abs{\nn}$. That is, there exists a bijection
+\[f:\nn \to (0,1)\]\newpage
+We examine the range of $f$. Any real number $0 < r < 1$ has a decimal expansion. If $r$ is irrational, then it has a unique decimal expansion. On the other hand, if $r$ is rational, then it can have two possible decimal expansions; for example,
+\[0.4000000\ldots = 0.399999\ldots\]
+In this case, we choose the expansion with a string of $0$'s from some point on. Thus, for every element in the range of $f$ (which is all of $(0,1)$ as $f$ is surjective), we can choose a distinct decimal expansion
+\begin{align*}
+f(1) &= a_1 = 0.{\color{firebrick}a_{11}}a_{12}a_{13}a_{14}\ldots\\[0.5em]
+f(2) &= a_2 = 0.a_{21}{\color{firebrick}a_{22}}a_{13}a_{14}\ldots\\[0.5em]
+f(3) &= a_3 = 0.a_{31}a_{32}{\color{firebrick}a_{33}}a_{34}\ldots\\[0.5em]
+f(4) &= a_4 = 0.a_{41}a_{42}a_{43}{\color{firebrick}a_{44}}\ldots\\
+	 & \qquad\qquad\vdots
+\end{align*}
+Cantor chose to examine the diagonal entries to produce an element in $(0,1)$ that is part of this list, that is, not contained in the range of $f$, thereby contradicting its surjectivity.\\
+\\
+Consider a sequence $\set{b_n}_{n \geq 1}$, where for each $n$, we have $0 \leq b_n \leq 9$, given by 
+\[b_k = \begin{cases}
+a_{kk} + 1 & \text{if $0 \leq a_{kk} < 9$}\\[0.5em]
+0 & \text{if $a_{kk} = 9$}
+\end{cases}\]
+Consider the real number
+\[b = 0.b_1b_2b_3b_4\ldots\]
+Note that for each $n$, $b \neq f(n) = a_n$, since they have different $n^{\text{th}}$ digits in their decimal expansion. We have produced an $b \in (0,1)$ but $b \notin f(\nn)$ and hence $f(\nn) \neq \rr$, contradicting the surjectivity of $f$. Thus, $\abs{\nn} < \abs{(0,1)} = \abs{\rr}$.
+\end{proof}

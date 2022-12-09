@@ -1,0 +1,322 @@
+\begin{mdframed}
+\begin{center}
+{\Large Trivial and Vacuous Proofs}
+\end{center}
+\end{mdframed}
+
+\begin{example}
+Let $x \in \rr$, show that if $0 < x < 1$, then $x^2 - 2x + 2 > 0$.
+\end{example}
+\begin{proof}[Answer]
+We first re-phrase the given statement symbolically by identifying the open sentences and the quantifier. Consider the following open sentences over the domain $\rr$
+\begin{align*}
+P(x)&:0 < x < 1\\[0.5em]
+Q(x)&:x^2 - 2x + 2 > 0
+\end{align*}
+So our statement is 
+\[R:\forall x \in \rr,\ P(x) \implies Q(x)\]
+Note that by completing the square we have $x^2 - 2x + 2 = (x - 1)^2 + 1 > 0$. That is, $Q(x)$ is true for every $x \in \rr$. Recall that an implication $U \implies V$ is true if $V$ is true, regardless of the truth value of $U$. Hence, in our case, the statement $R$ is true since $Q(x)$ is, for every $x \in \rr$.\\[0.5em]
+This type of proof is called a \cdef{trivial\ proof}, one where the conclusion is always true.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}
+Let $x \in \rr$, show that if $x^2 - 2x + 2 \leq 0$, then $x^3 \geq 0$.
+\end{example}
+\begin{proof}
+Our statement is
+\[R:\forall x \in \rr,\ P(x) \implies Q(x)\]
+where
+\begin{align*}
+P(x)&:x^2 - 2x + 2 \leq 0\\[0.5em]
+Q(x)&:x^3 \geq 0
+\end{align*}
+Our observations in the previous example tell us that $P(x)$ is false for every $x \in \rr$. Recall that an implication $U \implies V$ is true if $U$ is false, regardless of the truth value of $V$. Hence, in our case, the statement $R$ is true since $P(x)$ is false, for every $x \in \rr$.\\[0.5em]
+This type of proof is called a \cdef{vacuous\ proof}, one where the hypothesis is always false.
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Direct Proofs}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}
+Let $P(x)$ and $Q(x)$ be open sentences over a domain $S$. Suppose our goal is to show that $P(x) \implies Q(x)$ is true for every $x \in S$, that is, we wish to show the quantified statement
+\[\forall x \in S,\ P(x) \implies Q(x) \tag{$*$}\]
+is true. Now, recall that if some $x \in S$, $P(x)$ is false, then the implication statement is true (vacuously). Hence, we need only be concerned with showing
+that $(*)$ is true for those $x\in S$ for which P(x) is true.\\
+\\
+In a \cdef{direct\ proof} for $(*)$, we consider an arbitrary element $x \in S$ for which $P(x)$ is true and show that $Q(x)$ is true as well for this element $x$.
+\end{discussion}
+
+%\vspace*{1em}
+
+\begin{example}
+For every odd integer $n$, show that $3n + 7$ is even.
+\end{example}
+\begin{proof}[Answer]
+We first re-write the statement
+\[\forall n \in \zz,\ \text{if}\ \underbrace{\text{$n$ is odd}}_{P(n)},\ \text{then}\ \underbrace{\text{$3n+7$ is even}}_{Q(n)}\]
+\begin{subproof}
+For questions concerning the parity of integers, proceed as follows.
+\begin{itemize}
+\item[(i)] an integer $n$ is even \emph{if and only if} $n = 2k$ for some integer $k$.
+\item[(ii)] an integer $n$ is odd \emph{if and only if} $n = 2k + 1$ for some integer $k$.
+\end{itemize}
+\end{subproof}
+Suppose $n$ is odd (as $P(n)$ is only true for such integers), we need to show $3n + 7$ is even. Since $n$ is odd, we can write $n = 2k + 1$ for some integer $k$. Therefore
+\begin{align*}
+3n + 7 &= 3(2k + 1) + 7 = 6k + 10 = 2(3k + 5)
+\end{align*}
+Since $3k + 5$ is an integer, $3n + 7 = 2(3k + 5)$ is even.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+For a positive integer $m$, recall from Example \ref{example:modularith} that we say $k$ is congruent to $\ell$ modulo $m$, denoted $k \equiv \ell \modar{m}$,
+\begin{align*}
+\text{if and only if} & \text{ the difference $k-\ell$ is divisibile by $m$}\\[0.5em]
+\text{if and only if} & \text{ $k$ and $\ell$ leave the same remainder when divided by $m$}
+\end{align*}
+\end{remark}
+
+\vspace*{1em}
+
+\begin{example}\label{example:squareparity}
+For an integer $n$, show that $n^2 \equiv 0,1\modar{4}$. In other words, \[\text{\emph{for a square $n^2$, the remainder when divided by $4$ cannot be $2$ or $3$.}}\]
+\end{example}
+\begin{proof}[Experiment]
+\renewcommand{\qed}{}
+Before we attempt to give a proof, let us first gain insight by experimenting
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{c|cccccccccccc}
+$n$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ & $12$\\
+\hline
+$n^2$ & $1$ & $4$ & $9$ & $16$ & $25$ & $36$ & $49$ & $64$ & $81$ & $100$ & $121$ & $144$\\
+\hline
+$n^2\modar{4}$ & $1$ & $0$ & $1$ & $0$ & $1$ & $0$ & $1$ & $0$ & $1$ & $0$ & $1$ & $0$
+\end{tabular}
+}
+\end{center}
+It appears that
+\begin{equation*}
+\left\{\begin{aligned}
+	&\text{if $n$ is odd, then $n^2 \equiv 1 \modar{4}$}\\[0.5em]
+	&\text{if $n$ is even, then $n^2 \equiv 0 \modar{4}$}
+\end{aligned}\right.
+\end{equation*}
+\end{proof}
+\begin{proof}
+Suppose $n$ is an integer, then $n$ is either even or odd. Suppose first that $n$ is even, we show that $n^2 \equiv 0 \modar{4}$. We can write $n = 2k$ for some integer $k \in \zz$. Then,
+\[n^2 = (2k)^2 = 4k^2 \equiv 0 \modar{4}\]
+Suppose now that $n$ is odd, we show that $n^2 \equiv 1 \modar{4}$. We can write $n = 2\ell + 1$ for some integer $\ell \in \zz$. Then,
+\[n^2 = (2\ell + 1)^2 = 4\ell^2 + 4\ell + 1 = 4(\ell^2 + \ell) + 1 \equiv 1 \modar{4}\]
+Therefore, for every integer $n$, we have $n^2 \equiv 0,1 \modar{4}$.
+\end{proof}
+
+%\vspace*{1em}
+
+\begin{lemma}\label{lemma:conseceven}
+For an integer $n$, $n^2 + n$ is even.
+\end{lemma}
+\begin{proof}
+We first make the crucial observation that $n^2 + n = n(n+1)$. We now show that $n(n+1)$ is even, by first considering the case when $n$ is even, and then considering the case when $n$ is odd.\\
+\\
+Suppose first that $n$ is even, in which case $n = 2k$ for some integer $k$. Then,
+\[n^2 + n = n(n+1) = 2k(2k + 1),\]
+since $k(2k + 1)$ is an integer, $n^2 + n$ is even.\\[0.5em]
+Now suppose that $n$ is odd, in which case we write $n = 2\ell + 1$ for some integer $\ell$. Then,
+\[n^2 + n = n(n+1) = (2\ell + 1)(2\ell + 2) = 2(2\ell + 1)(\ell + 1),\]
+since $(2\ell + 1)(\ell + 1)$ is an integer, $n^2 + n$ is even.\\
+\\
+Therefore $n^2 + n$ is even for any integer $n$.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{discussion}
+Let's revisit our experiment in Example \ref{example:squareparity}, this time with the last column computing the remainder when divided by $8$.
+\begin{center}
+{\renewcommand{\arraystretch}{1.5}%
+\begin{tabular}{c|>{\columncolor[gray]{0.8}}cc>{\columncolor[gray]{0.8}}cc>{\columncolor[gray]{0.8}}cc>{\columncolor[gray]{0.8}}cc>{\columncolor[gray]{0.8}}cc>{\columncolor[gray]{0.8}}cc}
+$n$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ & $12$\\
+\hline
+$n^2$ & $1$ & $4$ & $9$ & $16$ & $25$ & $36$ & $49$ & $64$ & $81$ & $100$ & $121$ & $144$\\
+\hline
+$n^2\modar{8}$ & $1$ &  & $1$ &  & $1$ &  & $1$ &  & $1$ &  & $1$ & 
+\end{tabular}
+}
+\end{center}
+It appears that when $n$ is odd, $n^2 \equiv 1 \modar{8}$. Is this true for every odd integer $n$?
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{proposition}
+For an odd integer $n$, $n^2 \equiv 1 \modar{8}$.
+\end{proposition}
+\begin{proof}
+Since $n$ is odd, we can write $n = 2k + 1$ for some integer $k$. Then,
+\[n^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 4k(k + 1) + 1\]
+By Lemma \ref{lemma:conseceven}, $k(k+1)$ is even, so say $k(k+1) = 2\ell$ for an integer $\ell$. Therefore,
+\[n^2 = 4k(k + 1) + 1 = 8\ell + 1 \equiv 1 \modar{8}\]
+This completes the proof.
+\end{proof}
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Proof by Contrapositive}
+\end{center}
+\end{mdframed}
+
+\begin{discussion}[Contrapositive of an Implication]
+To prove an implication $P \implies Q$ is the same as proving its \cdef{contrapositive} $\neg Q \implies \neg P$.
+\end{discussion}
+
+\vspace*{1em}
+
+\begin{theorem}
+Let $P$ and $Q$ be statements, then $(P \implies Q) \equiv (\neg Q \implies \neg P)$.
+\end{theorem}
+\begin{proof}
+We know now that the most optimal way to prove this is not via truth tables but by using logical equivalence laws.
+\begin{align*}
+\neg Q \implies \neg P &\equiv \neg (\neg Q) \vee \neg P && \text{by Theorem \ref{theorem:impliesequiv}}\\[0.5em]
+ &\equiv Q \vee \neg P && \text{by Double Negation law}\\[0.5em]
+ &\equiv \neg P \vee Q && \text{by Commutative Laws}\\[0.5em]
+ &\equiv P \implies Q && \text{by Theorem \ref{theorem:impliesequiv}}\\[-3em]
+\end{align*}
+\end{proof}
+
+\vspace*{1em}
+
+\begin{example}\label{example:contra}
+Let $x \in \zz$. Show that if $\underbrace{\,5x - 7 \text{ is even},\,}_{P(x)}$ then $\underbrace{\,x \text{ is odd}\,}_{Q(x)}$.\\[0.5em]
+Symbolically, we have $(\forall x \in \zz,\ P(x) \implies Q(x))$. The contrapositive of this statement is then 
+\[\forall x \in \zz,\ \neg Q(x) \implies \neg P(x)\]
+which in words is \emph{for all $x \in \zz$, if $x$ is not odd (even), then $5x - 7$ is not even (odd).}
+\end{example}
+\begin{proof}
+We prove the contrapositive. Suppose $x$ is even, we can write $x = 2n$ for some integer $n$. Then,
+\[5x - 7 = 5(2n) - 7 = 10n - 7 = 2(5n - 4) + 1\]
+Since $5n-4$ is an integer, therefore $5x - 7$ is odd. This completes the proof.
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+While a direct proof of Example \ref{example:contra}, it will be more complicated. The hypothesis is $5x - 7$ is even, so we can write $5x - 7 = 2k$ for some integer $k$. Solving for $x$, we get
+\[x = \frac{2k + 7}{5},\]
+a fraction! It is not immediately obvious why this fraction is an odd integer. Since $x$ is an integer, $2k + 7$ must be divisible by $5$ (notation: $5 \mid (2k + 7)$). So $k$ must have some special property. If we can understand $k$, then we may be able to give  direct proof.  
+\begin{proof}[Direct Proof of Example \ref{example:contra}]
+Since $5x - 7$ is even, so we can write $5x - 7 = 2k$ for some integer $k$. Solving for $x$, we get
+\[x = \frac{2k + 7}{5}.\]
+Since $x$ is an integer, $2k + 7$ must be divisible by $5$. Now, $2k + 7 = 2(k+1) + 5$, and therefore $5\mid (2k + 7)$ is equivalent to $5\mid 2(k+1)$. Since $2$ and $5$ are coprime, $5$ must divide $k + 1$. Thus, we may write $k +1 = 5\ell$ for an integer $\ell$. So, $k = 5\ell - 1$ and we have
+\[x = \frac{2(5\ell - 1) + 7}{5} = \frac{10\ell + 5}{5} = 2\ell + 1\]
+Since $\ell$ is an integer, $x$ is odd. This completes the proof.
+\end{proof}
+\end{remark}
+As you see, proof by contrapositive was more straightforward than a direct proof. 
+
+\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Biconditional Statements}
+\end{center}
+\end{mdframed}
+Recall that, by definition $(P \iff Q) \equiv (P \implies Q) \land (Q \implies P)$. So, to prove $P$ if and only if $Q$, we must prove $P \implies Q$ \emph{and} $Q \implies P$. 
+
+\vspace*{1em}
+
+\begin{example}
+An integer $n$ is even if and only if $n^2$ is even.\\
+\\
+We first determine the logical structure, for which we start by identifying the open sentences
+\begin{align*}
+P(n)&: \text{$n$ is even.}\\
+Q(n)&: \text{$n^2$ is even.}
+\end{align*}
+So, what we're being asked to prove is
+\[\forall n \in \zz,\ P(n) \iff Q(n)\]
+\end{example}
+\begin{proof}
+We need to prove
+\begin{align*}
+P(n) \implies Q(n) &: \text{if $n$ is even, then $n^2$ is even; and} \tag{1}\\[0.5em]
+Q(n) \implies P(n) &: \text{if $n^2$ is even, then $n$ is even.} \tag{2}
+\end{align*}
+Let's first show (1). When $n$ is even, we can write $n = 2k$ for some $k \in \zz$. Then,
+\[n^2 = (2k)^2 = 2(2k^2).\]
+Since $2k^2$ is an integer, $n^2$ is even.\\
+\\
+Let's now prove (2). Our initial strategy would be a direct proof which would look like
+\begin{center}
+Since $n^2$ is even, we may write $n^2 = 2k$ for some integer $k$. Then,\\
+solving $n$ gets us $n = \sqrt{2k}$...?! We need to change our strategy.
+\end{center}
+So, we'll prove the contrapositive $\neg P(n) \implies \neg Q(n)$.\\[0.5em]
+Assume $n$ is odd, we will show then that $n^2$ is also odd. Since $n$ is odd, we may write $n = 2k + 1$ for some integer $k$. Then,
+\begin{align*}
+n^2 &= (2k + 1)^2\\
+ &= 4k^2 + 4k + 1\\
+ &= 2(2k^2 + 2k) + 1.
+\end{align*}
+Since $2k^2 + 2k$ is an integer, $n^2$ is odd. 
+\end{proof}
+
+\vspace*{1em}
+
+\begin{remark}
+(Proving) $P \implies Q$ is equivalent to (proving) its contrapositive $\neg Q \implies \neg P$. However, it is \emph{not} the same thing as $\neg P \implies \neg Q$.\\[0.5em]
+What we are saying is: to show \emph{if $P$ is true, then $Q$ is true}, we instead can show \[\text{\emph{if $Q$ is false, then $P$ is false}.}\]
+\end{remark}
+
+%\vspace*{2em}
+
+\begin{mdframed}
+\begin{center}
+{\Large Proof by Cases}
+\end{center}
+\end{mdframed}
+Recall that, by definition $(P \iff Q) \equiv (P \implies Q) \land (Q \implies P)$. So, to prove $P$ if and only if $Q$, we must prove $P \implies Q$ \emph{and} $Q \implies P$. 
+
+\vspace*{1em}
+
+\begin{example}
+Let $x,\,y \in \zz$. Show that $x$ and $y$ have the same parity (are both odd or both even) \emph{if and only} if $x + y$ is even.
+\end{example}
+\begin{proof}[Scratch Notes]
+\renewcommand{\qedsymbol}{}
+As we have a biconditional statement, we need to prove two implications
+\begin{align*}
+&\text{if $x$ and $y$ have the same parity, then $x + y$ is even.} \tag{1}\\[0.5em]
+&\text{if $x+y$ is even, then $x$ and $y$ have the same parity.} \tag{2}
+\end{align*}
+To prove (1) where we assume $x$ and $y$ have the same parity, we are presented with, and therefore consider, two \emph{cases}.
+\begin{align*}
+\text{Case 1}.&\ \text{$x$ and $y$ are both even. So, $x = 2k$ and $y = 2\ell$ for some $k,\ell \in \zz$.}\\[0.5em]
+\text{Case 2}.&\ \text{$x$ and $y$ are both odd. So, $x = 2k + 1$ and $y = 2\ell + 1$ for some $k,\ell \in \zz$.}
+\end{align*}
+\begin{dangerbend}
+For two independent variables, $x$ and $y$ in our case, we must use different $k,\,\ell \in \zz$.
+\end{dangerbend}
+To prove (2), giving a direct proof may turn out to be a bit challenging. So, we instead prove the contrapositive. That is, we show that \emph{if $x$ and $y$ have opposite parity, then $x + y$ is odd.} Once again, we are presented with, and therefore consider, two \emph{cases}.
+\begin{align*}
+\text{Case 1}.&\ \text{$x$ is even and $y$ is odd. So, $x = 2k$ and $y = 2\ell + 1$ for some $k,\ell \in \zz$.}\\[0.5em]
+\text{Case 2}.&\ \text{$x$ is odd and $y$ is even. So, $x = 2k + 1$ and $y = 2\ell + 1$ for some $k,\ell \in \zz$.}
+\end{align*}
+Note that these two cases are \emph{symmetric in $x$ and $y$.} That is, if the first case considered as an open sentence $R(x,y)$, then the second case is $R(y,x)$. Hence, by symmetry, we only have to do one case. That is, whatever proof you give for Case 1., the proof for Case 2. will look exactly the same, except you will have switched the roles of $x$ and $y$.\\[0.5em]
+In such a situation, we say \cdef{without\ loss\ of\ generality} and prove one of the cases, say Case 1. and assume $x$ is even and $y$ is odd. 
+\end{proof}
+\begin{proof}
+We leave it to the reader to produce a proof for this example.
+\end{proof}
